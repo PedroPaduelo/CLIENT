@@ -1,5 +1,5 @@
 import React  from 'react';
-import { Container } from './styles';
+import { Container, ContainerBody } from './styles';
 
 import Routes from "../../services/routes";
 
@@ -9,8 +9,6 @@ import LinkRout from '../../components/LinkRout'
 import CainteinerLink from '../../components/LinkRout/CainteinerLink'
 
 function desLogar() {
-  console.log("EEEE")
-
   localStorage.removeItem("esta_logado");
   window.location.reload(false);
   return ""
@@ -22,7 +20,7 @@ function MainBoard(props) {
       <Container>
         <NavBar fundoNavBar="linear-gradient(to bottom, #7159c1, #7159de)">
           <h1>
-              Gestao Geral AC
+              Nommand
           </h1>
 
           <CainteinerLink>
@@ -45,8 +43,10 @@ function MainBoard(props) {
           />
         </NavBar>
 
+        <ContainerBody>
+            <Routes/>
+        </ContainerBody>
         
-        <Routes/>
       </Container>  
 
       

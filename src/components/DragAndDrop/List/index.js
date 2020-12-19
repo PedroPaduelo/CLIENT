@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useDrop } from 'react-dnd';
 import {MdAdd} from 'react-icons/md';
 
-import { Container , ModalCss} from './styles';
+import { Container } from './styles';
 import BoardContext from '../Board/context'
 
 import Modal from '../../Modal'
@@ -70,7 +70,6 @@ function List({ data, indexList }) {
         <h2>{data.title}</h2>
         {data.creatable === "true" && 
           <Modal  
-            ModalCss={ModalCss} 
             ContenteButton={<MdAdd size={20} color="#fff"/>}
             modalIsOpen={modalIsOpen}
             openModal={openModal}

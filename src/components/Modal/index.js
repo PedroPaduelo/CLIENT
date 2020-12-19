@@ -2,7 +2,19 @@ import React from 'react';
 
 import Modal from 'react-modal';
 
-function Modals({children, ModalCss, ContenteButton, modalIsOpen, openModal, closeModal }) {
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+    width                 : '600px'
+  }
+}
+
+function Modals({children, ContenteButton, modalIsOpen, openModal, closeModal }) {
 
 
     return (
@@ -10,8 +22,7 @@ function Modals({children, ModalCss, ContenteButton, modalIsOpen, openModal, clo
             <button onClick={openModal}>{ContenteButton}</button>
             <Modal
                 isOpen={modalIsOpen}
-                style={ModalCss}
-                contentLabel="Example Modal"
+                style={customStyles}
                 >
                     <h2>Cadastra Atividades</h2>
                     
