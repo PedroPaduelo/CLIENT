@@ -10,6 +10,21 @@ export const Container = styled.div`
 export const ContainerBody = styled.div`
     overflow: auto;   
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
+
+    
 `;
+
+
+export const BarraLateral = styled.div`
+    overflow: auto;   
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 270px 
+
+    
+`;
+
+

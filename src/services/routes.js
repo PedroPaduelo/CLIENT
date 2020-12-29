@@ -1,30 +1,75 @@
 import React from "react";
-import { isAuthenticated } from "./auth/auth";
-
 import { Route, Redirect } from "react-router-dom";
 
-import Login from "../pages/Login";
-import DragAndDrop from "../components/DragAndDrop/Board";
-import Board from "../pages/Board";
+import { useAuth } from "./authContexto";
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-      )
-    }
-  />
-);
 
-const Routes = () => (
-    <main>
-      <PrivateRoute exact path="/logar" component={Login} />
-      <Route exact path="/toDoListCanva" component={DragAndDrop} />
-      <Route exact path="/rpas" component={Board} />
-    </main>
-);
+import Dashboard from "../pages/Dashboard";
+
+
+// Aplicação da Proc Vida Extra
+import PainelGeral from "../pages/App/ProcVida/PainelGeral";
+import FormeEpidemiologico from "../pages/App/ProcVida/InputForme/pages/Forme_CadReFatorado";
+
+
+
+
+function PrivateRoute({component: Component, redirectTO, ...rest }) {
+  const {validar} = useAuth();
+  return (
+    <Route
+      {...rest}
+      render={({ location , ...props}) =>
+      validar() ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: redirectTO,
+              state: { from: location }
+            }}
+          />
+        )
+      }
+    />
+  );
+}
+
+const rotasBase = [
+  {   
+    path: "/",
+    name: "To do List",
+    componente: "LoginNommand/index",
+  },
+  {   
+    path: "/SignUp_Nommand",
+    name: "To do List",
+    componente: "LoginNommand/SignUp",
+  },
+  {   
+    path: "/Login_ProcVida_Dash",
+    name: "To do List",
+    componente:  "App/ProcVida/LoginProcVida/index",
+  }
+]
+
+
+
+
+function Routes(){
+  return(
+    <>
+      {
+        rotasBase.map( (route, i) => {
+          return <Route exact key={i} component={require("../pages/"+ route.componente).default} {...route} />
+        })
+      }
+
+      <PrivateRoute path="/Painel_ProcVida" redirectTO={"/Login_ProcVida_Dash"} component={PainelGeral} />
+      <PrivateRoute path="/Dash_Board_interno" redirectTO={"/"} component={Dashboard} />
+      <PrivateRoute path="/Forme_Epidemiologico" redirectTO={"/Login_ProcVida_Dash"} component={FormeEpidemiologico} />
+    </>
+  );
+}
+
 export default Routes;

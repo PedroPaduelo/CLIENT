@@ -1,12 +1,20 @@
 import React  from 'react';
 import { Container, ContainerBody } from './styles';
 
-import Routes from "../../services/routes";
+import {
+  MdFeaturedPlayList
+} from 'react-icons/md';
 
 import NavBar from '../../components/NavBar'
 import DescUserLogado from "../../components/NavBar/DescUserLogado";
 import LinkRout from '../../components/LinkRout'
 import CainteinerLink from '../../components/LinkRout/CainteinerLink'
+
+import {
+  Switch,
+  Route
+} from "react-router-dom";
+
 
 function desLogar() {
   localStorage.removeItem("esta_logado");
@@ -14,7 +22,22 @@ function desLogar() {
   return ""
 }
 
-function MainBoard(props) {
+
+
+function MainBoard() {
+
+  const rotasDash= [{   
+    path: "/Dash_Board_interno/dd",
+    name: "Type Forme de Epidemiologia",
+    component: "",
+  },
+  {   
+    path: "/Dash_Board_interno/Forme_Cad",
+    name: "To do List",
+    component: "Forme_CadReFatorado",
+  },
+]
+
   
   return (
       <Container>
@@ -25,14 +48,14 @@ function MainBoard(props) {
 
           <CainteinerLink>
             { 
-            props.links.map(function(item){
-                return <LinkRout 
-                    key={item.link}
-                    activeOnlyWhenExact={true}
-                    to={item.link} 
-                    label={<item.icon/>}
-                />
-            })}
+            rotasDash.map(function(item){
+                  return <LinkRout 
+                      key={item.path}
+                      activeOnlyWhenExact={true}
+                      to={item.path} 
+                      label={<MdFeaturedPlayList/>}
+                  />
+              })}
           </CainteinerLink>
 
           <DescUserLogado 
@@ -44,7 +67,20 @@ function MainBoard(props) {
         </NavBar>
 
         <ContainerBody>
-            <Routes/>
+
+
+
+
+
+        <Switch>
+          {rotasDash.map((route, i) => (
+            <Route key={i}  {...route}/>
+          ))}
+        </Switch>
+        
+    
+
+
         </ContainerBody>
         
       </Container>  

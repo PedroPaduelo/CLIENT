@@ -1,0 +1,8 @@
+.card_contato_interno{
+    width: 100%;
+    border: solid;
+    border-width: 1px;
+    border-radius: 8px;
+    border-color: darkgray;
+    padding: 4px;
+}

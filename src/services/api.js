@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://procvidaapi.herokuapp.com/',
+    baseURL: 'http://localhost:3010/',
 })
 
 export default api;
