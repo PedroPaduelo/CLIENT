@@ -34,8 +34,6 @@ import {
 } from "react-router-dom";
 
 
-import { secondaryListItems } from './listItems';
-
 import { useAuth }   from "../../services/authContexto";
 import { useHistory } from 'react-router-dom';
 

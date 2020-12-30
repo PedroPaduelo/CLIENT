@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 
 import TextField from '@material-ui/core/TextField';
 
-import studyIcon from "../../assets/images/icons/study.svg"
-import giveClassesIcon from "../../assets/images/icons/give-classes.svg"
 
 
 import './styles.css'
@@ -21,8 +18,7 @@ const theme = createMuiTheme({
 function Login() {
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
-    const history = useHistory();
-   
+
 
     return (
         <ThemeProvider theme={theme}>
