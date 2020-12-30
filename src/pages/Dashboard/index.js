@@ -1,4 +1,7 @@
 import React, { useState , useEffect } from 'react';
+import { Link } from "react-router-dom";
+
+
 import clsx from 'clsx';
 import { makeStyles, createMuiTheme , ThemeProvider} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,17 +16,17 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import Avatar from '@material-ui/core/Avatar';
+import Icon from '@material-ui/core/Icon';
+import { red } from '@material-ui/core/colors';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import DashboardIcon from '@material-ui/icons/Dashboard';
-
 
 import {
   Switch,
@@ -37,10 +40,7 @@ import { useAuth }   from "../../services/authContexto";
 import { useHistory } from 'react-router-dom';
 
 
-
 import api from '../../services/api';
-
-
 
 
 const theme = createMuiTheme({
@@ -48,9 +48,6 @@ const theme = createMuiTheme({
     htmlFontSize: 10,
   },
 });
-
-
-
 
 function Copyright() {
   return (
@@ -65,7 +62,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -144,6 +141,17 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  userLogado:{
+    marginLeft: "1rem"
+  },
+
+  iconButton:{
+    marginLeft: theme.spacing(1)
+  },
+  avatar: {
+    backgroundColor: red[500],
+  },
+
 }));
 
 
@@ -163,6 +171,7 @@ export default function Dashboard() {
   const classes = useStyles();
   const auth = useAuth();
   const history = useHistory();
+  const user = JSON.parse(localStorage.getItem(userKey))
 
 
   const [open, setOpen] = React.useState(true);
@@ -177,13 +186,11 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
 
   function desLogar(){
-      
       auth.signout()
-      history.push('/Dash_Board_interno')
-    
+      history.push('/')
   } 
 
   
@@ -219,11 +226,18 @@ export default function Dashboard() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Nommand
           </Typography>
-          <IconButton color="inherit" onClick={desLogar}>
+
+
+          <IconButton color="inherit" className={classes.iconButton}>
             <Badge badgeContent={4} color="secondary">
-              <NotificationsIcon />
+              <NotificationsIcon /> 
             </Badge>
           </IconButton>
+
+          <IconButton color="inherit" onClick={desLogar} className={classes.iconButton}>
+            <Icon  className="fas fa-sign-out-alt"> sign out  </Icon>
+          </IconButton>
+          
         </Toolbar>
       </AppBar>
       <Drawer
@@ -234,11 +248,16 @@ export default function Dashboard() {
         open={open}
       >
         <div className={classes.toolbarIcon}>
+          <Avatar className={classes.avatar}>
+            M
+          </Avatar>
+          <Typography  noWrap className={classes.userLogado}> {user.fistName}   {user.lastName} </Typography>
           <IconButton onClick={handleDrawerClose}>
             <ChevronLeftIcon />
           </IconButton>
         </div>
         <Divider />
+        
           <List>
             {rotas.map((route, i) => (
               <Link to={route.path}>
@@ -252,7 +271,16 @@ export default function Dashboard() {
             ))}
           </List>
         <Divider />
-        <List>{secondaryListItems}</List>
+        <List>
+          <Link to="/Painel_Nommand/Aplicacoes">
+              <ListItem button>
+                  <ListItemIcon>
+                      <DashboardIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Painel Principal"/>
+              </ListItem>
+          </Link>
+        </List>
       </Drawer>
 
       <main className={classes.content}>
@@ -260,29 +288,13 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             
-        
-
-
-
-            {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper className={fixedHeightPaper}>
-                <Switch>
-                  {rotas.map((route, i) => (
-                    <Route key={i}  {...route}/>
-                  ))}
-                </Switch> 
-              </Paper>
-            </Grid>
-
-
-          
-
-
-
-           
+                  <Switch>
+                    {rotas.map((route, i) => (
+                      <Route key={i} component={require(""+ route.componente).default} {...route}/>
+                    ))}
+                  </Switch>
             
-          </Grid>
+            </Grid>
 
 
           <Box pt={4}>

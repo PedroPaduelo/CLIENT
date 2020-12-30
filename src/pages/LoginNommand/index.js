@@ -79,7 +79,7 @@ export default function SignInSide() {
 
   async function logar(){
     if(await auth.signin(email ,password)){
-      history.push('/Dash_Board_interno')
+      history.push('/Painel_Nommand/Aplicacoes')
     }
   } 
 

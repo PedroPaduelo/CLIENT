@@ -6,6 +6,7 @@ import { DndProvider } from 'react-dnd'
 import Routes from "./services/routes";
 import { ProvideAuth } from "./services/authContexto";
 
+
 function App() {
     return (    
         <ProvideAuth>

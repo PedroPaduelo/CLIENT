@@ -50,6 +50,11 @@ const rotasBase = [
     path: "/Login_ProcVida_Dash",
     name: "To do List",
     componente:  "App/ProcVida/LoginProcVida/index",
+  },
+  {   
+    path: "/Login_Forme",
+    name: "To do List",
+    componente:  "App/ProcVida/InputForme/pages/Login_Forme/index",
   }
 ]
 
@@ -66,7 +71,7 @@ function Routes(){
       }
 
       <PrivateRoute path="/Painel_ProcVida" redirectTO={"/Login_ProcVida_Dash"} component={PainelGeral} />
-      <PrivateRoute path="/Dash_Board_interno" redirectTO={"/"} component={Dashboard} />
+      <PrivateRoute path="/Painel_Nommand" redirectTO={"/"} component={Dashboard} />
       <PrivateRoute path="/Forme_Epidemiologico" redirectTO={"/Login_ProcVida_Dash"} component={FormeEpidemiologico} />
     </>
   );

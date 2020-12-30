@@ -19,6 +19,8 @@ import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+import Avatar from '@material-ui/core/Avatar';
+import Icon from '@material-ui/core/Icon';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -58,6 +60,7 @@ function Copyright() {
   );
 }
 const drawerWidth = 280;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -136,6 +139,13 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     paddingTop: "2rem",
     paddingBottom: "5rem",
+  },
+  userLogado:{
+    marginLeft: "1rem"
+  },
+
+  iconButton:{
+    marginLeft: theme.spacing(1)
   }
 }));
 
@@ -144,6 +154,7 @@ export default function Dashboard() {
   const classes = useStyles();
   const auth = useAuth();
   const userKey = 'user_nommand'
+  const user = JSON.parse(localStorage.getItem(userKey))
 
   const history = useHistory();
   const [rotas, setrotas] = useState([]);
@@ -176,7 +187,7 @@ export default function Dashboard() {
 
   function desLogar(){
       auth.signout()
-      history.push('/Dash_Board_interno')
+      history.push('/Login_ProcVida_Dash')
   } 
 
 
@@ -198,11 +209,17 @@ export default function Dashboard() {
             <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
               ProcVida
             </Typography>
-            <IconButton color="inherit" onClick={desLogar}>
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
+            
+            <IconButton color="inherit" className={classes.iconButton}>
+              <Badge color="secondary">
+                <NotificationsIcon /> 
               </Badge>
             </IconButton>
+
+            <IconButton color="inherit" onClick={desLogar} className={classes.iconButton}>
+              <Icon  className="fas fa-sign-out-alt"> sign out  </Icon>
+            </IconButton>
+
           </Toolbar>
         </AppBar>
         <Drawer
@@ -213,6 +230,10 @@ export default function Dashboard() {
           open={open}
         >
           <div className={classes.toolbarIcon}>
+            <Avatar className={classes.avatar}>
+              
+            </Avatar>
+            <Typography  noWrap className={classes.userLogado}> {user.fistName}   {user.lastName} </Typography>
             <IconButton onClick={handleDrawerClose}>
               <ChevronLeftIcon />
             </IconButton>
@@ -231,7 +252,16 @@ export default function Dashboard() {
               ))}
             </List>
           <Divider />
-          <List>{secondaryListItems}</List>
+          <List>
+            <Link to="/Painel_Nommand/Aplicacoes">
+                <ListItem button>
+                    <ListItemIcon>
+                        <DashboardIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="Painel Principal"/>
+                </ListItem>
+            </Link>
+          </List>
         </Drawer>
 
         <main className={classes.content}>

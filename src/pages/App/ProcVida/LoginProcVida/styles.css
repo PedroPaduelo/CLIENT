@@ -6,11 +6,12 @@
 
     color:  #8f8f8f;
 
-    background: url("https://www.bandab.com.br/wp-content/uploads/2018/01/medicina.jpg") no-repeat center top fixed;
+    background:  url("https://www.bandab.com.br/wp-content/uploads/2018/01/medicina.jpg") no-repeat center top fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
 
     display: grid;
     grid-template-rows: 1fr;

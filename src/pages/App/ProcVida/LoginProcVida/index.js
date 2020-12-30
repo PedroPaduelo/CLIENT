@@ -6,6 +6,8 @@ import './styles.css'
 import TextField from '@material-ui/core/TextField';
 import {createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
+import { useHistory } from 'react-router-dom';
+import { useAuth }   from "../../../../services/authContexto";
 
 const theme = createMuiTheme({
     typography: {
@@ -17,6 +19,14 @@ const theme = createMuiTheme({
 function Login() {
     const [email, setemail] = useState('');
     const [password, setpassword] = useState('');
+    const history = useHistory();
+    const auth = useAuth() 
+
+    async function logar(){
+        if(await auth.signin(email ,password)){
+          history.push('/Painel_ProcVida/Dashboard_Epdemiologia')
+        }
+      } 
 
     return (
         <ThemeProvider theme={theme}>
@@ -66,9 +76,9 @@ function Login() {
                             </div>
                             
                             <footer>
-                                <Link to="Painel_ProcVida" className="btn-login">
+                                <button to="Painel_ProcVida" className="btn-login" type="button" onClick={logar}>
                                     Entrar
-                                </Link>
+                                </button>
                             </footer>
                         </form>
                     </div>
