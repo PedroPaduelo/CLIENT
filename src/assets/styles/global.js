@@ -2,6 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 import styled from 'styled-components';
 export default createGlobalStyle`
 
+a{ 
+ text-decoration: none; 
+} 
+a:hover{ 
+ text-decoration: none; 
+} 
+
 
 *{
     margin: 0;

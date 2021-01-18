@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
+
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -7,14 +11,11 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import { Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
-import {  useAuth  }   from "../../services/authContexto";
-
-
+import { Context } from '../../Context/AuthContext';
+import Alert  from '../../components/Alert';
 
 
 
@@ -22,8 +23,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="http://nommand.com.br/">
+        nommand.com.br
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -57,42 +58,87 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignUp() {
-  const classes = useStyles();
-  const history = useHistory();
-  const auth = useAuth()
 
-  const [fistName, setfistName] = useState('');
-  const [lastName, setlastName] = useState('');
+
+
+export default function SignUp() {
+
+  const {handleSignup, loading } = useContext(Context);
+
+  const history = useHistory();
+  const classes = useStyles();
+
+  const [alerta, salerta] = useState({
+    open: false,
+    vertical: 'top',
+    horizontal: 'center',
+    mensagem: "",
+    type: ""
+  });
+
+
+  const [fistname, setfistname] = useState('');
+  const [lastname, setlastname] = useState('');
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
+  const [nomeorganizacao, snomeorganizacao] = useState('');
+
+
 
   async function signupUser(){
-
     if( 
-        fistName !== "" &&
-        lastName !== "" &&
+        fistname !== "" &&
+        lastname !== "" &&
         email !== "" &&
-        password !== ""
+        password !== "" &&
+        nomeorganizacao !== ""
      ){
-      auth.signup(
-        fistName ,
-        lastName ,
+      const result = await handleSignup({
+        fistname ,
+        lastname ,
         email ,
-        password
-      )
+        password,
+        nomeorganizacao
+      })
 
+      salerta({
+        open: true,
+        vertical: 'top',
+        horizontal: 'center',
+        mensagem: result.mensagem,
+        type: result.statusAlaerty
+      })
+
+      if(result.redirect)
       history.push('/')
+
+    }else{
+      salerta({
+        open: true,
+        vertical: 'top',
+        horizontal: 'center',
+        mensagem: "Favor Preencer todos os campos!!!",
+        type: "info"
+      })
+
     }
-
-    history.push('/SignUp_Nommand')
+    
   }
-
-
 
 
   return (
     <ThemeProvider theme={theme}>
+
+      {!loading &&
+      <Alert alerta={alerta} handleClose={() => salerta({
+          open: false,
+          vertical: 'top',
+          horizontal: 'center',
+          mensagem: "",
+          type: ""
+      })}  />
+      }
+      
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
@@ -114,8 +160,8 @@ export default function SignUp() {
                   id="firstName"
                   label="First Name"
                   autoFocus
-                  value={fistName}
-                  onChange={(e)=>{setfistName(e.target.value)}}
+                  value={fistname}
+                  onChange={(e)=>{setfistname(e.target.value)}}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -123,12 +169,12 @@ export default function SignUp() {
                   variant="outlined"
                   required
                   fullWidth
-                  id="lastName"
+                  id="lastname"
                   label="Last Name"
-                  name="lastName"
+                  name="lastname"
                   autoComplete="lname"
-                  value={lastName}
-                  onChange={(e)=>{setlastName(e.target.value)}}
+                  value={lastname}
+                  onChange={(e)=>{setlastname(e.target.value)}}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -157,6 +203,22 @@ export default function SignUp() {
                   autoComplete="current-password"
                   value={password}
                   onChange={(e)=>{setpassword(e.target.value)}}
+                />
+              </Grid>
+
+
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="nomeorganizacao"
+                  label="Nome da organização"
+                  type="nomeorganizacao"
+                  id="nomeorganizacao"
+                  autoComplete="current-password"
+                  value={nomeorganizacao}
+                  onChange={(e)=>{snomeorganizacao(e.target.value)}}
                 />
               </Grid>
             </Grid>

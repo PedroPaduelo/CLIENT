@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -15,8 +15,7 @@ import {makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styl
 
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import { useAuth }   from "../../services/authContexto";
-
+import { Context } from '../../Context/AuthContext';
 
 
 
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   image: {
-    backgroundImage: 'url(https://www.nomadesonline.com/wp-content/uploads/2018/05/mesa-de-trabalho-1280x640.jpg)',
+    backgroundImage: 'url(https://mentalidadeempreendedora.com.br/wp-content/uploads/2017/01/nomade-digital.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center' 
@@ -67,21 +66,26 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-
 export default function SignInSide() {
-  const classes = useStyles();
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
-  const history = useHistory();
 
-  const auth = useAuth() 
+  const classes = useStyles();
+  const history = useHistory();
+  
+  const { authenticated, handleLogin } = useContext(Context);
+
+  if(authenticated){
+    history.push('/Nommand')
+  }
+  
+  async function Logar(){
+    await handleLogin(email ,password)
+    history.push('/Nommand')
+  } 
+
   
 
-  async function logar(){
-    if(await auth.signin(email ,password)){
-      history.push('/Painel_Nommand/Aplicacoes')
-    }
-  } 
 
 
   return (
@@ -138,7 +142,7 @@ export default function SignInSide() {
               variant="contained"
               color="primary"
               className={classes.submit}
-              onClick={logar}
+              onClick={Logar}
             >
               Entrar
             </Button>
@@ -149,7 +153,7 @@ export default function SignInSide() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link to="/SignUp_Nommand" variant="body2">
+                <Link to="/SignUpNommand" variant="body2">
                  Não é cadastrado ainda? Se cadastre aqui
                 </Link>
               </Grid>

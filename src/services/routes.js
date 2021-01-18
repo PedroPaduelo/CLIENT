@@ -1,80 +1,80 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
 
-import { useAuth } from "./authContexto";
-
-
-import Dashboard from "../pages/Dashboard";
+import { Switch } from "react-router-dom";
+import CustomRoute from './CustomRoute'
 
 
-// Aplicação da Proc Vida Extra
-import PainelGeral from "../pages/App/ProcVida/PainelGeral";
-import FormeEpidemiologico from "../pages/App/ProcVida/InputForme/pages/Forme_CadReFatorado";
+import LoginNommand from "../pages/LoginNommand";
 
+import Pricing from "../pages/Pricing";
 
+import SignUp from "../pages/LoginNommand/SignUp";
 
+import Dashboard from "../components/Dashboard";
 
-function PrivateRoute({component: Component, redirectTO, ...rest }) {
-  const {validar} = useAuth();
-  return (
-    <Route
-      {...rest}
-      render={({ location , ...props}) =>
-      validar() ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: redirectTO,
-              state: { from: location }
-            }}
-          />
-        )
-      }
-    />
-  );
-}
-
-const rotasBase = [
-  {   
-    path: "/",
-    name: "To do List",
-    componente: "LoginNommand/index",
-  },
-  {   
-    path: "/SignUp_Nommand",
-    name: "To do List",
-    componente: "LoginNommand/SignUp",
-  },
-  {   
-    path: "/Login_ProcVida_Dash",
-    name: "To do List",
-    componente:  "App/ProcVida/LoginProcVida/index",
-  },
-  {   
-    path: "/Login_Forme",
-    name: "To do List",
-    componente:  "App/ProcVida/InputForme/pages/Login_Forme/index",
-  }
-]
-
+import FormePacienteIndex from "../pages/AppProcVida/FormePacienteIndex";
 
 
 
 function Routes(){
+  
   return(
-    <>
-      {
-        rotasBase.map( (route, i) => {
-          return <Route exact key={i} component={require("../pages/"+ route.componente).default} {...route} />
-        })
-      }
+    <Switch>
+      <CustomRoute exact path="/" redirectTO={"/"} component={LoginNommand} /> 
+      <CustomRoute exact path="/SignUpNommand" redirectTO={"/"} component={SignUp} /> 
 
-      <PrivateRoute path="/Painel_ProcVida" redirectTO={"/Login_ProcVida_Dash"} component={PainelGeral} />
-      <PrivateRoute path="/Painel_Nommand" redirectTO={"/"} component={Dashboard} />
-      <PrivateRoute path="/Forme_Epidemiologico" redirectTO={"/Login_ProcVida_Dash"} component={FormeEpidemiologico} />
-    </>
+
+      <CustomRoute isPrivate path="/Nommand" redirectTO={"/"} component={()=> <Dashboard id="0"/>} /> 
+      <CustomRoute isPrivate path="/ProcVida" redirectTO={"/"} component={()=> <Dashboard id="1"/>} /> 
+      <CustomRoute exact path="/FormePacienteIndex/:id_paciente/:cod_acesso" redirectTO={"/"} component={()=> <FormePacienteIndex/>} /> 
+
+      <CustomRoute exact isPrivate path="/Pricing/:id_app" redirectTO={"/"} component={()=> <Pricing/>} /> 
+
+    </Switch>
   );
 }
 
 export default Routes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
