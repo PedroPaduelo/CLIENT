@@ -4,13 +4,11 @@ import { useHistory } from "react-router-dom";
 
 import GoogleLogin from 'react-google-login';
 
-import { AuthContext } from '../../Contexts/AuthContext';
 
-import api from '../../services/api';
 
 export default function SignInSide() {
 
-  const { handleLogin } = useContext(AuthContext);
+
   const history = useHistory();
 
 
