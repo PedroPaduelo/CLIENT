@@ -55,7 +55,7 @@ function PageProduto() {
     }
     getProd()
 
-  },[handleProd, id])
+  },[id])
 
 
   return (
