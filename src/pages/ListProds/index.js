@@ -21,15 +21,18 @@ export default function DenseTable() {
   const { handleListProd, listprod } = useContext(ProductContext)
 
 
-  useEffect(() => {
+    useEffect(() => {
+        async function getItems() {
+            try {
+                await handleListProd()
+            } catch (error) {
+                alert("Ocorreu um erro ao buscar os items");
+            }
+        }
+        getItems();
+    }, []);
 
-    async function lsitgeral(){
-      await handleListProd()
-    }
 
-    lsitgeral()
-
-  },[handleListProd])
 
 
   return (
