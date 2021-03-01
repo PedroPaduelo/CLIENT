@@ -54,7 +54,7 @@ function PageProduto() {
     }
     getProd()
 
-  },[])
+  },[handleProd])
 
 
   return (
