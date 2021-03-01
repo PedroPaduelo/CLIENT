@@ -27,7 +27,7 @@ export default function DenseTable() {
       await handleListProd()
     }
     lsitgeral()
-  },[listprod])
+  },[])
 
 
   return (
