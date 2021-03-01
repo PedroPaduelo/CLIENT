@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
 export default function SimpleAlerts({alerta, handleClose}) {
   const classes = useStyles();
 
