@@ -58,7 +58,7 @@ export default function DenseTable() {
               </TableCell>
 
               <TableCell align="right">
-                http://localhost:3000/PageProd/{row.id}
+                https://nommand.com.br/PageProd/{row.id}
               </TableCell>
 
               <TableCell align="right">
