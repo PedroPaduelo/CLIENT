@@ -178,7 +178,20 @@ export default function Album({prod}) {
                             }}
                         />
                     </Grid>
-                    
+
+                    <Grid item xs={12} className={classes.marginTop1} >
+                        
+                            {/* <Button variant="contained" color="primary" className={classes.btn}>
+                               Pagar
+                            </Button> */}
+
+                   
+                            
+
+                        
+
+                       
+                    </Grid>
 
 
                 </Grid>
