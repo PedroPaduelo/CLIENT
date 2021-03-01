@@ -47,7 +47,6 @@ function PageProduto() {
   const { handleProd, prod } = useContext(ProductContext)
   let { id } = useParams();
   const classes = useStyles();
-  console.log(id)
 
   useEffect(()=>{
     async function getProd(){
