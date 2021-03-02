@@ -17,7 +17,7 @@ function Routes(){
 
       <CustomRoute isPrivate path="/Painel" redirectTO={"/"} component={Dashboard}/> 
 
-      <CustomRoute exact path="/PageProd/:id" redirectTO={"/"} component={PageProduto} />
+      <CustomRoute exact path="/:prodname/:id" redirectTO={"/"} component={PageProduto} />
 
     </Switch>
   );

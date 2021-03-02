@@ -11,6 +11,7 @@ import { ProductContext } from '../../Contexts/ProductContext';
 function PageProduto() {
   const { handleProd, prod } = useContext(ProductContext)
   let { id } = useParams();
+  let { prodname } = useParams();
 
 
     useEffect(() => {
