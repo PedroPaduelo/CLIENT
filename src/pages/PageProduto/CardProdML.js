@@ -1,32 +1,16 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
 import TextField from '@material-ui/core/TextField';
-import { Paper } from '@material-ui/core';
 import Chip from '@material-ui/core/Chip';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="http://nommand.com.br">
-        www.nommand.com.br
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -136,7 +120,7 @@ export default function Album({prod}) {
             <Grid item xs={1} sm={2}/>
             <Grid item xs={10} sm={8} className={classes.marginTop1}>
                 <Typography variant="h6" align="center" gutterBottom>
-                    Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC
+                    {prod.poductsubhead}
                 </Typography>
             </Grid>
             <Grid item xs={1} sm={2}/>
@@ -181,16 +165,12 @@ export default function Album({prod}) {
 
                     <Grid item xs={12} className={classes.marginTop1} >
                         
-                            {/* <Button variant="contained" color="primary" className={classes.btn}>
-                               Pagar
-                            </Button> */}
+                        <Link className={classes.btn} href={prod.linkbuy}>
+                            <Button variant="contained" color="primary" className={classes.btn}>
+                                Comprar
+                            </Button>
+                        </Link>
 
-                   
-                            
-
-                        
-
-                       
                     </Grid>
 
 
@@ -201,16 +181,6 @@ export default function Album({prod}) {
 
 
         </Grid>
-
-
-    
-        <footer className={classes.footer}>
-            <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-                Uma pagina, varias experiencias
-            </Typography>
-            <Copyright />
-        </footer>
- 
     </React.Fragment>
   );
 }

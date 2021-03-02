@@ -35,6 +35,7 @@ function Creatprod() {
   const [ produtcname, sprodutcname ] = useState();
   const [ produtcfile, sprodutcfile ] = useState();
   const [ produtcdescription, sprodutcdescription ] = useState();
+  const [ poductsubhead, spoductsubhead ] = useState();
   const [ pixelfacebook, spixelfacebook ] = useState();
   const [ googleanalitic, sgoogleanalitic ] = useState();
   const [ statusprodutc, sstatusprodutc ] = useState();
@@ -47,6 +48,7 @@ function Creatprod() {
     await handleCreatedProd({
       produtcname,
       produtcfile,
+      poductsubhead,
       produtcdescription,
       pixelfacebook,
       googleanalitic,
@@ -92,6 +94,21 @@ function Creatprod() {
           onChange={(e)=>{sprodutcfile(e.target.value)}}
           />
       </Grid>
+
+      <Grid item xs={12} >
+        <TextField
+            id="outlined-multiline-static"
+            label="Sub Header"
+            multiline
+            rows={2}
+            variant="outlined"
+            fullWidth
+            value={poductsubhead}
+            onChange={(e)=>{spoductsubhead(e.target.value)}}
+        />
+      </Grid>
+
+       
 
       <Grid item xs={12} >
         <TextField

@@ -22,7 +22,7 @@ function PageProduto() {
             }
         }
         getItems();
-    }, []);
+    }, [handleProd,id]);
 
 
   return (
