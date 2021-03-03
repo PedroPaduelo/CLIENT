@@ -10,6 +10,7 @@ import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
+import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
@@ -64,6 +65,14 @@ const useStyles = makeStyles((theme) => ({
   gridItemPriceCompra:{
     justifyContent: 'space-between',
     width: "100%",
+    display: 'flex'
+  },
+  
+  fabbtn:{
+      width: "4rem"
+  },
+  divMarging:{
+    justifyContent: 'space-between',
     display: 'flex'
   },
 
@@ -158,20 +167,25 @@ export default function Album({prod}) {
 
                         <Chip label={`R$ ${prod.price}`} className={classes.fontSize} variant="outlined" icon={<LocalOfferIcon />} />
 
-                        <Link className={classes.btn} href={prod.linkbuy}>
-                            <Button variant="contained" color="primary" className={classes.btn}
-                                startIcon={<AddShoppingCartIcon />}
- 
-                            >
-                                Comprar agora 
-                            </Button>
+                        <div className={classes.divMarging}>
+                            <Link className={classes.btn} href={prod.linkbuy}>
+                                <Button variant="contained" color="primary" className={classes.btn}
+                                    startIcon={<AddShoppingCartIcon />}
+    
+                                >
+                                    Comprar agora 
+                                </Button>
 
-                            {/* <IconButton color="primary" aria-label="add to shopping cart">
-                                <AddShoppingCartIcon />
-                            </IconButton> */}
+                                {/* <IconButton color="primary" aria-label="add to shopping cart">
+                                    <AddShoppingCartIcon />
+                                </IconButton> */}
 
-                        </Link>
+                            </Link>
 
+                            <Fab size="small" aria-label="edit" >
+                                <img src="https://imagepng.org/wp-content/uploads/2017/08/WhatsApp-icone.png" alt="whatsapp" className={classes.fabbtn}/>
+                            </Fab>
+                        </div>
                     </Grid>
 
                     <Grid item xs={12} className={classes.marginTop1} >
