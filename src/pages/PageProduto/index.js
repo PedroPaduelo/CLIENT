@@ -23,7 +23,7 @@ function PageProduto() {
             }
         }
         getItems();
-    }, [handleProd,id]);
+    }, [prodname, id]);
 
 
   return (
