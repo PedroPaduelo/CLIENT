@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import Link from '@material-ui/core/Link';
+
 import api from '../../services/api'
 
 const useStyles = makeStyles({
@@ -41,33 +43,36 @@ export default function DenseTable() {
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell align="right">Nome</TableCell>
-            <TableCell align="right">Status</TableCell>
-            <TableCell align="right">Preço</TableCell>
-            <TableCell align="right">Link da pragina</TableCell>
-            <TableCell align="right">Ir para pagina</TableCell>
+            <TableCell align="left">Nome</TableCell>
+            <TableCell align="left">Status</TableCell>
+            <TableCell align="left">Preço</TableCell>
+            <TableCell align="left">Link da pragina</TableCell>
+            <TableCell align="left">Ir para pagina</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {listprod.map((row) => (
             <TableRow key={row.id}>
-              <TableCell align="right">
+              <TableCell align="left">
                 {row.produtcname}
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell align="left">
                 {row.statusprodutc}
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell align="left">
                 {row.price}
               </TableCell>
 
-              <TableCell align="right">
-                https://nommand.com.br/{row.linkpage}/{row.id}
+              <TableCell align="left">
+                    {row.linkpage}/{row.id}
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell align="left">
+                    <Link href={`/${row.linkpage}/${row.id}`}>
+                        Visualizar
+                    </Link>
               </TableCell>
 
             </TableRow>

@@ -27,21 +27,22 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Creatprod() {
-  const classes = useStyles();
+    const classes = useStyles();
 
-  const { handleCreatedProd } = useContext(ProductContext)
-  const { user } = useContext(AuthContext)
+    const { handleCreatedProd } = useContext(ProductContext)
+    const { user } = useContext(AuthContext)
 
-  const [ produtcname, sprodutcname ] = useState();
-  const [ produtcfile, sprodutcfile ] = useState();
-  const [ produtcdescription, sprodutcdescription ] = useState();
-  const [ poductsubhead, spoductsubhead ] = useState();
-  const [ pixelfacebook, spixelfacebook ] = useState();
-  const [ googleanalitic, sgoogleanalitic ] = useState();
-  const [ statusprodutc, sstatusprodutc ] = useState();
-  const [ linkbuy, slinkbuy ] = useState();
-  const [ price, sprice ] = useState();
-  const [ linkpage, slinkpage ] = useState();
+    const [ produtcname, sprodutcname ] = useState();
+    const [ produtcfile, sprodutcfile ] = useState();
+    const [ produtcdescription, sprodutcdescription ] = useState();
+    const [ poductsubhead, spoductsubhead ] = useState();
+    const [ pixelfacebook, spixelfacebook ] = useState();
+    const [ googleanalitic, sgoogleanalitic ] = useState();
+    const [ whatsvendedor, swhatsvendedor ] = useState();
+    const [ statusprodutc, sstatusprodutc ] = useState();
+    const [ linkbuy, slinkbuy ] = useState();
+    const [ price, sprice ] = useState();
+    const [ linkpage, slinkpage ] = useState();
 
   async function creatrdProd(){
 
@@ -75,7 +76,7 @@ function Creatprod() {
             </Typography>
         </Grid>
     
-      <Grid item xs={12} >
+      <Grid item xs={6} >
         <TextField 
             id="standard-basic" 
             label="Name do Produto" 
@@ -85,7 +86,7 @@ function Creatprod() {
         />
       </Grid>
 
-      <Grid item xs={12} >
+      <Grid item xs={6} >
         <TextField 
           id="standard-basic" 
           label="Imagem do produto" 
@@ -115,7 +116,7 @@ function Creatprod() {
             id="outlined-multiline-static"
             label="Descrição do produt"
             multiline
-            rows={4}
+            rows={3}
             variant="outlined"
             fullWidth
             value={produtcdescription}
@@ -123,7 +124,7 @@ function Creatprod() {
         />
       </Grid>
 
-      <Grid item xs={12} >
+      <Grid item xs={3} >
         <TextField
             label="Preço"
             id="standard-start-adornment"
@@ -136,7 +137,7 @@ function Creatprod() {
         />
       </Grid>
 
-      <Grid item xs={12} >
+      <Grid item xs={3} >
         <TextField 
           id="standard-basic" 
           label="Pixel do facebook" 
@@ -146,7 +147,7 @@ function Creatprod() {
         />
       </Grid>
 
-      <Grid item xs={12} >
+      <Grid item xs={3} >
         <TextField 
           id="standard-basic" 
           label="Googel analitic" 
@@ -156,7 +157,18 @@ function Creatprod() {
         />
       </Grid>
 
-      <Grid item xs={12} >
+      <Grid item xs={3} >
+        <TextField 
+          id="standard-basic" 
+          label="Whast do vendedor" 
+          fullWidth
+          value={whatsvendedor}
+          onChange={(e)=>{swhatsvendedor(e.target.value)}}
+        />
+      </Grid>
+
+
+      <Grid item xs={2} >
         <TextField 
           id="standard-basic"
           label="Status" 
@@ -166,7 +178,7 @@ function Creatprod() {
         />
       </Grid>
 
-      <Grid item xs={12} >
+      <Grid item xs={5} >
         <TextField 
           id="standard-basic" 
           label="Link do pagamento" 
@@ -176,7 +188,7 @@ function Creatprod() {
         />
       </Grid>
 
-      <Grid item xs={12} >
+      <Grid item xs={5} >
         <TextField
           label="Link da pagina"
           id="standard-start-adornment"
