@@ -16,6 +16,9 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
+  tablemargin:{
+      marginTop: "2rem"
+  }
 });
 
 export default function DenseTable() {
@@ -39,7 +42,7 @@ export default function DenseTable() {
 
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className={classes.tablemargin}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>

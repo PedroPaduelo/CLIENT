@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 
 import { Grid } from '@material-ui/core';
 
-import Creatprod from './Creatprod';
+import SelectPage from './SelectPage';
 import ListProds from '../ListProds';
-import ViewProd from './ViewProd';
+import CadastraProd from './CadastraProd';
 
 import Alert  from '../../components/Alert';
 
@@ -23,7 +23,11 @@ function CriarProdsVsPages() {
 
       <Grid item xs={12}>
         {
-          toggle ? <ViewProd/> : <> <Creatprod/> <ListProds/>   </> 
+          toggle ? <CadastraProd/> : 
+            <> 
+                <SelectPage/> 
+                <ListProds/>   
+            </> 
         }
       </Grid>
     </Grid>

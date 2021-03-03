@@ -23,12 +23,12 @@ function ProductProvider({ children }) {
 
 
   const handleToggleProd = () => {
-    stoggle(true);
+    stoggle(!toggle);
   };
 
   async function handleCreatedProd(dados){
     await api.post(`/CreatProdutos`, dados)
-    stoggle(false);
+    stoggle(!toggle);
     salerta({
       open: true,
       vertical: 'top',

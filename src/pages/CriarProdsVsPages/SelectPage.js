@@ -14,7 +14,14 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     alignSelf:'center',
     justifySelf: 'center',
-    marginBottom: "3rem"
+    marginBottom: "1rem"
+  },
+
+  gridItemBtnBack:{
+    justifyContent: 'center',
+    width: "100%",
+    display: 'flex',
+    flexDirection:"column"
   },
   
 }));
@@ -33,10 +40,10 @@ function Creatprod() {
       spacing={3}
       className={classes.root}
     >
-      <Grid item xs={4}/>
+      
 
-      <Grid item xs={4} >
-        <Typography>
+      <Grid item xs={12} className={classes.gridItemBtnBack}>
+        <Typography className={classes.btn} >
             Criar um novo produto
         </Typography>
 
@@ -47,7 +54,6 @@ function Creatprod() {
         </Button>
       </Grid>
 
-      <Grid item xs={4} />
     </Grid>
 
 

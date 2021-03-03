@@ -9,8 +9,8 @@ import Chip from '@material-ui/core/Chip';
 import LocalOfferIcon from '@material-ui/icons/LocalOffer';
 import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-
-
+// import IconButton from '@material-ui/core/IconButton';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -43,7 +43,8 @@ const useStyles = makeStyles((theme) => ({
   },
 
   fontSize: {
-    fontSize: "2rem"
+    fontSize: "2rem",
+    marginTop: "0.3rem"
   },
 
     marginleftp1: {
@@ -58,6 +59,12 @@ const useStyles = makeStyles((theme) => ({
   conteinerDefinicaoimg: {
     marginTop: "1rem",
     padding: "2rem"
+  },
+
+  gridItemPriceCompra:{
+    justifyContent: 'space-between',
+    width: "100%",
+    display: 'flex'
   },
 
 
@@ -147,8 +154,24 @@ export default function Album({prod}) {
                     </Grid>
 
 
-                    <Grid item xs={12} className={classes.marginTop1} >
+                    <Grid item xs={12} className={classes.gridItemPriceCompra} >
+
                         <Chip label={`R$ ${prod.price}`} className={classes.fontSize} variant="outlined" icon={<LocalOfferIcon />} />
+
+                        <Link className={classes.btn} href={prod.linkbuy}>
+                            <Button variant="contained" color="primary" className={classes.btn}
+                                startIcon={<AddShoppingCartIcon />}
+ 
+                            >
+                                Comprar agora 
+                            </Button>
+
+                            {/* <IconButton color="primary" aria-label="add to shopping cart">
+                                <AddShoppingCartIcon />
+                            </IconButton> */}
+
+                        </Link>
+
                     </Grid>
 
                     <Grid item xs={12} className={classes.marginTop1} >
@@ -165,11 +188,11 @@ export default function Album({prod}) {
 
                     <Grid item xs={12} className={classes.marginTop1} >
                         
-                        <Link className={classes.btn} href={prod.linkbuy}>
+                        {/* <Link className={classes.btn} href={prod.linkbuy}>
                             <Button variant="contained" color="primary" className={classes.btn}>
                                 Comprar
                             </Button>
-                        </Link>
+                        </Link> */}
 
                     </Grid>
 
