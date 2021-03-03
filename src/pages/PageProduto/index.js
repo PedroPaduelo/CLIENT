@@ -1,27 +1,29 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { useParams } from "react-router-dom";
 import CardProd from './CardProdML';
 
-import { ProductContext } from '../../Contexts/ProductContext';
 
+import api from '../../services/api'
 
 function PageProduto() {
-  const { handleProd, prod } = useContext(ProductContext)
   let { id } = useParams();
   let { prodname } = useParams();
+  const [ prod, sprod ] = useState([]);
 
+console.log(prodname)
 
     useEffect(() => {
         async function getItems() {
             try {
-                await handleProd(id)
+                const { data } = await api.get(`/ListProdutosById/${id}`);
+                sprod(data)
             } catch (error) {
-                alert("Ocorreu um erro ao buscar os items");
+                console.log(error)
             }
         }
         getItems();
-    }, [prodname, id]);
+    },[id]);
 
 
   return (
