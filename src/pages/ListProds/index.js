@@ -64,7 +64,7 @@ export default function DenseTable() {
               </TableCell>
 
               <TableCell align="right">
-               https://3000-lavender-marmoset-h5x559vg.ws-us03.gitpod.io/{row.linkpage}/{row.id}
+                https://nommand.com.br/{row.linkpage}/{row.id}
               </TableCell>
 
               <TableCell align="right">
