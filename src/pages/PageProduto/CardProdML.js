@@ -67,15 +67,17 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: 'flex'
   },
-  
   fabbtn:{
       width: "4rem"
   },
   divMarging:{
-    justifyContent: 'space-between',
     display: 'flex'
   },
 
+  btn:{
+    marginRight: "2rem",
+    marginTop: "0.5rem"
+  },
 
 
 
@@ -169,7 +171,7 @@ export default function Album({prod}) {
 
                         <div className={classes.divMarging}>
                             <Link className={classes.btn} href={prod.linkbuy}>
-                                <Button variant="contained" color="primary" className={classes.btn}
+                                <Button variant="contained" color="primary"
                                     startIcon={<AddShoppingCartIcon />}
     
                                 >
