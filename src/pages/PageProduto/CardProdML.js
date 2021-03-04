@@ -12,9 +12,7 @@ import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-
 import ReactGA from 'react-ga';
-
 
 
 const useStyles = makeStyles((theme) => ({
@@ -51,7 +49,12 @@ const useStyles = makeStyles((theme) => ({
   },
   conteinerDefinicao: {
     display: "flex",
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: "column"
+    },
   },
+
+  
   conteinerDefinicaoimg: {
     marginTop: "1rem",
     padding: "1rem"
@@ -61,6 +64,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     display: 'flex',
     marginTop: "2rem",
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: "column"
+    },
   },
   fabbtn:{
       width: "4rem"
@@ -81,14 +87,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-
-
 export default function Album({prod}) {
-  const classes = useStyles();
+    const classes = useStyles();
 
 
-ReactGA.initialize(prod.produtcfile, {debug : true });
-ReactGA.pageview(window.location.pathname + window.location.search);
+    ReactGA.initialize(prod.produtcfile, {debug : true });
+    ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
     <React.Fragment>
@@ -109,12 +113,12 @@ ReactGA.pageview(window.location.pathname + window.location.search);
                 </Typography>
             </Grid>
 
-            <Grid item xs={12} className={classes.conteinerDefinicao}>
+            <Grid item xs={12} sm={8} md={12} className={classes.conteinerDefinicao}>
 
-                <Grid item xs={6} className={classes.conteinerDefinicao} >
 
-                    <Grid item xs={3} className={classes.conteinerDefinicaoimg} >
+                <Grid item xs={12} sm={8} md={6} className={classes.conteinerDefinicao} >
 
+                    <Grid item xs={12}  sm={3} className={classes.conteinerDefinicaoimg} >
                         <Grid item xs={12}>
                             <CardMedia
                                 component="img"
@@ -125,7 +129,7 @@ ReactGA.pageview(window.location.pathname + window.location.search);
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={9} className={classes.conteinerDefinicaoimg} >
+                    <Grid item xs={12}  sm={9} className={classes.conteinerDefinicaoimg} >
                         <CardMedia
                             component="img"
                             className={classes.cardMedia}
@@ -136,7 +140,10 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
                 </Grid>
 
-                <Grid item xs={6} className={classes.conteinerDefinicaoimg}>
+
+
+
+                <Grid item xs={12} sm={8} md={6} className={classes.conteinerDefinicaoimg}>
                     
                     <Grid item xs={12}  >
                         <Typography variant="h4" align="left"  gutterBottom>
@@ -144,7 +151,7 @@ ReactGA.pageview(window.location.pathname + window.location.search);
                         </Typography>
                     </Grid>
 
-                    <Grid item xs={12} className={classes.gridItemPriceCompra} >
+                    <Grid item xs={12} sm={12} className={classes.gridItemPriceCompra} >
 
                         <Chip label={`R$ ${prod.price}`} className={classes.fontSize} variant="outlined" icon={<LocalOfferIcon />} />
 
