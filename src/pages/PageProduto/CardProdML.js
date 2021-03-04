@@ -14,8 +14,7 @@ import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-64774940-4',{debug : true });
-ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -85,6 +84,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Album({prod}) {
   const classes = useStyles();
+
+
+ReactGA.initialize(prod.produtcfile, {debug : true });
+ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
     <React.Fragment>
