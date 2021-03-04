@@ -14,6 +14,10 @@ import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 import ReactGA from 'react-ga';
+ReactGA.initialize('G-BF0S8EBCT2',{debug : true });
+ReactGA.pageview(window.location.pathname + window.location.search);
+
+
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -77,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-ReactGA.pageview(window.location.pathname + window.location.search);
+
 
 export default function Album({prod}) {
   const classes = useStyles();
