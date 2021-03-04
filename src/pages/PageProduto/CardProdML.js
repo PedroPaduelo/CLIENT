@@ -14,7 +14,7 @@ import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
 import ReactGA from 'react-ga';
-ReactGA.initialize('G-BF0S8EBCT2',{debug : true });
+ReactGA.initialize('UA-64774940-4',{debug : true });
 ReactGA.pageview(window.location.pathname + window.location.search);
 
 
