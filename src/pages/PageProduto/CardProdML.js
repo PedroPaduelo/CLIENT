@@ -19,7 +19,7 @@ import ReactGA from 'react-ga';
 
 const useStyles = makeStyles((theme) => ({
   icon: {
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(0),
   },
   marginTop1: {
     marginTop: "0.1rem"
@@ -39,30 +39,26 @@ const useStyles = makeStyles((theme) => ({
   alingimgaem: {
     justifyContent: "center",
     alignContent: "center",
-    padding: "1rem"
   },
   cardMedia: { 
     borderRadius: "15px",
     marginBottom: "4rem"
   },
+  
   fontSize: {
     fontSize: "2rem",
     marginTop: "0.3rem"
   },
-  marginleftp1: {
-    marginLeft: "0.1rem"
-  },
   conteinerDefinicao: {
     display: "flex",
-    marginTop: "0rem"
   },
   conteinerDefinicaoimg: {
     marginTop: "1rem",
-    padding: "2rem"
+    padding: "1rem"
   },
+  
   gridItemPriceCompra:{
     justifyContent: 'space-between',
-    width: "100%",
     display: 'flex',
     marginTop: "2rem",
   },
@@ -97,19 +93,18 @@ ReactGA.pageview(window.location.pathname + window.location.search);
   return (
     <React.Fragment>
         <Grid
-            container
             spacing={1}
             className={classes.cardContent}
         >
             
             <Grid item xs={12} >
-                <Typography variant="h3" align="center" gutterBottom>
+                <Typography variant="h3" align="center" >
                     {prod.produtcname}
                 </Typography>
             </Grid>
-
+            
             <Grid item xs={10} sm={12} className={classes.marginTop1}>
-                <Typography variant="h6" align="center" gutterBottom>
+                <Typography variant="h6" align="center" >
                     {prod.poductsubhead}
                 </Typography>
             </Grid>
@@ -141,10 +136,6 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
                 </Grid>
 
-
-
-
-
                 <Grid item xs={6} className={classes.conteinerDefinicaoimg}>
                     
                     <Grid item xs={12}  >
@@ -152,7 +143,6 @@ ReactGA.pageview(window.location.pathname + window.location.search);
                             {prod.produtcname}
                         </Typography>
                     </Grid>
-
 
                     <Grid item xs={12} className={classes.gridItemPriceCompra} >
 
@@ -198,8 +188,11 @@ ReactGA.pageview(window.location.pathname + window.location.search);
                             </Fab>
                         </Link>
                     </Grid>
+                
                 </Grid>
+
             </Grid>
+            
         </Grid>
     </React.Fragment>
   );

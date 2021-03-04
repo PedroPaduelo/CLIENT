@@ -4,15 +4,9 @@ import CardProd from './CardProdML';
 import api from '../../services/api'
 
 
-
-
-
 function PageProduto() {
   let { id } = useParams();
-  let { prodname } = useParams();
   const [ prod, sprod ] = useState([]);
-
-console.log(prodname)
 
     useEffect(() => {
         async function getItems() {
