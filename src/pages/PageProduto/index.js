@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
-
 import { useParams } from "react-router-dom";
 import CardProd from './CardProdML';
-
-
 import api from '../../services/api'
+
+
+
+
 
 function PageProduto() {
   let { id } = useParams();

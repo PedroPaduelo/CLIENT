@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
+import ReactGA from 'react-ga';
 const useStyles = makeStyles((theme) => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -32,36 +33,29 @@ const useStyles = makeStyles((theme) => ({
   marginTop5: {
     marginTop: "5rem"
   },
-
   alingimgaem: {
     justifyContent: "center",
     alignContent: "center",
     padding: "1rem"
   },
-
   cardMedia: { 
     borderRadius: "15px"
   },
-
   fontSize: {
     fontSize: "2rem",
     marginTop: "0.3rem"
   },
-
-    marginleftp1: {
+  marginleftp1: {
     marginLeft: "0.1rem"
   },
-
   conteinerDefinicao: {
     display: "flex",
     marginTop: "0rem"
   },
-
   conteinerDefinicaoimg: {
     marginTop: "1rem",
     padding: "2rem"
   },
-
   gridItemPriceCompra:{
     justifyContent: 'space-between',
     width: "100%",
@@ -73,48 +67,17 @@ const useStyles = makeStyles((theme) => ({
   divMarging:{
     display: 'flex'
   },
-
   btn:{
     marginRight: "2rem",
     marginTop: "0.5rem"
   },
-
-
-
-
-
-
-
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(2),
-    paddingBottom: theme.spacing(2)
-    
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  
   cardContent: {
     marginTop: "1rem"
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(1),
-  },
-  display: {
-    display: 'flex',
-    
-    justifyContent: "center",
-    alignContent: "center"
-  },
-
-  
+  }
 }));
+
+
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 export default function Album({prod}) {
   const classes = useStyles();
@@ -133,28 +96,38 @@ export default function Album({prod}) {
                 </Typography>
             </Grid>
 
-
-
-            <Grid item xs={1} sm={2}/>
-            <Grid item xs={10} sm={8} className={classes.marginTop1}>
+            <Grid item xs={10} sm={12} className={classes.marginTop1}>
                 <Typography variant="h6" align="center" gutterBottom>
                     {prod.poductsubhead}
                 </Typography>
             </Grid>
-            <Grid item xs={1} sm={2}/>
-
-
 
             <Grid item xs={12} className={classes.conteinerDefinicao}>
 
                 <Grid item xs={6} className={classes.conteinerDefinicaoimg} >
-                    <CardMedia
-                        component="img"
-                        className={classes.cardMedia}
-                        image={prod.produtcfile}
-                        title="Image title"
-                    />
+
+                    <Grid item xs={6} className={classes.conteinerDefinicaoimg} >
+                        <CardMedia
+                            component="img"
+                            className={classes.cardMedia}
+                            image={prod.produtcfile}
+                            title="Image title"
+                        />
+                    </Grid>
+                    <Grid item xs={6} className={classes.conteinerDefinicaoimg} >
+                        <CardMedia
+                            component="img"
+                            className={classes.cardMedia}
+                            image={prod.produtcfile}
+                            title="Image title"
+                        />
+                    </Grid>
+
                 </Grid>
+
+
+
+
 
                 <Grid item xs={6} className={classes.conteinerDefinicaoimg}>
                     
