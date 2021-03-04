@@ -12,6 +12,7 @@ import Routes from "./routes";
 const theme = createMuiTheme({
     typography: {
         htmlFontSize: 10,
+        fontFamily: 'Montserrat'
     }
 });
 

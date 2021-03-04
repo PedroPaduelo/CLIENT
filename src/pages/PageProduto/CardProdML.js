@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem"
   },
   cardMedia: { 
-    borderRadius: "15px"
+    borderRadius: "15px",
+    marginBottom: "4rem"
   },
   fontSize: {
     fontSize: "2rem",
@@ -62,7 +63,8 @@ const useStyles = makeStyles((theme) => ({
   gridItemPriceCompra:{
     justifyContent: 'space-between',
     width: "100%",
-    display: 'flex'
+    display: 'flex',
+    marginTop: "2rem",
   },
   fabbtn:{
       width: "4rem"
@@ -76,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     marginTop: "1rem"
+  },
+  textFieldline: {
+        content: "none",
   }
 }));
 
@@ -111,17 +116,21 @@ ReactGA.pageview(window.location.pathname + window.location.search);
 
             <Grid item xs={12} className={classes.conteinerDefinicao}>
 
-                <Grid item xs={6} className={classes.conteinerDefinicaoimg} >
+                <Grid item xs={6} className={classes.conteinerDefinicao} >
 
-                    <Grid item xs={6} className={classes.conteinerDefinicaoimg} >
-                        <CardMedia
-                            component="img"
-                            className={classes.cardMedia}
-                            image={prod.produtcfile}
-                            title="Image title"
-                        />
+                    <Grid item xs={3} className={classes.conteinerDefinicaoimg} >
+
+                        <Grid item xs={12}>
+                            <CardMedia
+                                component="img"
+                                className={classes.cardMedia}
+                                image={prod.produtcfile}
+                                title="Image title"
+                            />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={6} className={classes.conteinerDefinicaoimg} >
+
+                    <Grid item xs={9} className={classes.conteinerDefinicaoimg} >
                         <CardMedia
                             component="img"
                             className={classes.cardMedia}
@@ -157,16 +166,7 @@ ReactGA.pageview(window.location.pathname + window.location.search);
                                 >
                                     Comprar agora 
                                 </Button>
-
-                                {/* <IconButton color="primary" aria-label="add to shopping cart">
-                                    <AddShoppingCartIcon />
-                                </IconButton> */}
-
                             </Link>
-
-                            <Fab size="small" aria-label="edit" >
-                                <img src="https://imagepng.org/wp-content/uploads/2017/08/WhatsApp-icone.png" alt="whatsapp" className={classes.fabbtn}/>
-                            </Fab>
                         </div>
                     </Grid>
 
@@ -176,29 +176,30 @@ ReactGA.pageview(window.location.pathname + window.location.search);
                             fullWidth 
                             multiline
                             defaultValue={prod.produtcdescription}
+                            className={classes.textFieldline}
                             InputProps={{
                                 readOnly: true,
                             }}
                         />
                     </Grid>
 
-                    <Grid item xs={12} className={classes.marginTop1} >
-                        
-                        {/* <Link className={classes.btn} href={prod.linkbuy}>
-                            <Button variant="contained" color="primary" className={classes.btn}>
-                                Comprar
+                    <Grid item xs={12} className={classes.gridItemPriceCompra} >
+                        <Link className={classes.btn} href={prod.linkbuy}>
+                            <Button variant="contained" color="primary"
+                                startIcon={<AddShoppingCartIcon />}
+                            >
+                                Comprar agora 
                             </Button>
-                        </Link> */}
+                        </Link>
 
+                        <Link className={classes.btn} href={`https://api.whatsapp.com/send?phone=55${prod.whatsvendedor}`} target="_blank">
+                            <Fab size="small" aria-label="edit" >
+                                <img src="https://imagepng.org/wp-content/uploads/2017/08/WhatsApp-icone.png" alt="whatsapp" className={classes.fabbtn}/>
+                            </Fab>
+                        </Link>
                     </Grid>
-
-
                 </Grid>
-        
             </Grid>
-
-
-
         </Grid>
     </React.Fragment>
   );

@@ -73,7 +73,7 @@ export default function DenseTable() {
               </TableCell>
 
               <TableCell align="left">
-                    <Link href={`/${row.linkpage}/${row.id}`}>
+                    <Link href={`/${row.linkpage}/${row.id}`} >
                         Visualizar
                     </Link>
               </TableCell>
