@@ -1,30 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { useHistory } from "react-router-dom";
 
 import GoogleLogin from 'react-google-login';
+import { AuthContext } from '../../Contexts/AuthContext';
 
-
+import api from '../../services/api'
 
 export default function SignInSide() {
 
 
   const history = useHistory();
+  const { handleLogin } = useContext(AuthContext);
 
-
-  
   async function Logar(response){
 
-    // const tokenId = response.tokenId
-    // const {data} = await api.post(`/LoginUser`, {tokenId})
+    const tokenId = response.tokenId
+    const {data} = await api.post(`/LoginUser`, {tokenId})
 
-    // const setContextUser =  await handleLogin(tokenId,data)
+    const setContextUser =  await handleLogin(tokenId,data)
 
-    // if(setContextUser){
-    //   history.push('/PainelGeral')
-    // }
-    
-    history.push('/Painel')
+    if(setContextUser){
+      history.push('/Painel')
+    }
   } 
 
 
