@@ -80,6 +80,7 @@ function Creatprod() {
       produtcname,
       produtcfile,
       poductsubhead,
+      whatsvendedor,
       produtcdescription,
       pixelfacebook,
       googleanalitic,
