@@ -55,7 +55,15 @@ const useStyles = makeStyles((theme) => ({
   },
 
   
-  conteinerDefinicaoimg: {
+  conteinerDefinicaoimg1: {
+    marginTop: "1rem",
+    padding: "1rem",
+    [theme.breakpoints.down('sm')]: {
+      display: "none"
+    },
+  },
+
+  conteinerDefinicaoimg2: {
     marginTop: "1rem",
     padding: "1rem"
   },
@@ -102,13 +110,13 @@ export default function Album({prod}) {
             className={classes.cardContent}
         >
             
-            <Grid item xs={12} >
+            <Grid item xs={12} sm={12} >
                 <Typography variant="h3" align="center" >
                     {prod.produtcname}
                 </Typography>
             </Grid>
             
-            <Grid item xs={10} sm={12} className={classes.marginTop1}>
+            <Grid item xs={12} sm={12} className={classes.marginTop1}>
                 <Typography variant="h6" align="center" >
                     {prod.poductsubhead}
                 </Typography>
@@ -119,7 +127,9 @@ export default function Album({prod}) {
 
                 <Grid item xs={12} sm={8} md={6} className={classes.conteinerDefinicao} >
 
-                    <Grid item xs={12}  sm={3} className={classes.conteinerDefinicaoimg} >
+
+
+                    <Grid item xs={12}  sm={3} className={classes.conteinerDefinicaoimg1} >
                         <Grid item xs={12}>
                             <CardMedia
                                 component="img"
@@ -130,7 +140,7 @@ export default function Album({prod}) {
                         </Grid>
                     </Grid>
 
-                    <Grid item xs={12}  sm={9} className={classes.conteinerDefinicaoimg} >
+                    <Grid item xs={12} sm={9} className={classes.conteinerDefinicaoimg2} >
                         <CardMedia
                             component="img"
                             className={classes.cardMedia}
