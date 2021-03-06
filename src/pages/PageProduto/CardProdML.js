@@ -91,7 +91,8 @@ export default function Album({prod}) {
     const classes = useStyles();
 
 
-    ReactGA.initialize(prod.produtcfile, {debug : true });
+
+    ReactGA.initialize(prod.googleanalitic, {debug : true });
     ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
