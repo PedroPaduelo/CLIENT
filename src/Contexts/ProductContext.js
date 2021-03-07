@@ -11,6 +11,7 @@ function ProductProvider({ children }) {
   const [ toggle, stoggle ] = useState(false);
   const [ listprod, slistprod ] = useState([]);
   const [ prod, sprod ] = useState([]);
+
   const [ alerta, salerta ] = useState({
     open: false,
     vertical: 'top',
@@ -26,16 +27,20 @@ function ProductProvider({ children }) {
     stoggle(!toggle);
   };
 
+
+
+
   async function handleCreatedProd(dados){
-    await api.post(`/CreatProdutos`, dados)
+    const id = await api.post(`/CreatProdutos`, dados)
     stoggle(!toggle);
     salerta({
       open: true,
       vertical: 'top',
       horizontal: 'center',
-      mensagem: "Priduto Criado com sucesso!!!",
+      mensagem: "Produto Criado com sucesso!!!",
       type: "success"
     })
+    return id
   };
 
   async function handleListProd(){
@@ -57,6 +62,7 @@ function ProductProvider({ children }) {
   }
 
 
+
   async function handleAlert(){
     salerta({
       open: false,
@@ -76,10 +82,11 @@ function ProductProvider({ children }) {
       handleListProd,
       handleProd,
       handleAlert,
+
       toggle,
       alerta,
       listprod,
-      prod
+      prod,
     }}>
       {children}
     </ProductContext.Provider>
