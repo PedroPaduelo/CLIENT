@@ -56,12 +56,12 @@ const useStyles = makeStyles((theme) => ({
   
   cardMediaSelect: { 
     borderRadius: "8px",
-    width: "90%"
+    width: "100%"
   },
 
   cardMedia: { 
     borderRadius: "8px",
-    width: "90%"
+    width: "100%"
   },
   
   
@@ -100,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
       paddingLeft: "1rem",
       paddingRight: "1rem",
-       height: "20rem"
+      height: "20rem"
     },
   },
 
