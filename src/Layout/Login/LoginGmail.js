@@ -33,7 +33,7 @@ export default function SignInSide() {
   
     <div>
       <GoogleLogin
-        clientId="457320718168-34ekq1e25neb1dnneg0g8qooq0udr6n3.apps.googleusercontent.com"
+        clientId="500065680033-90nknfddkptn9mo9a6n3emn9q9cotcgh.apps.googleusercontent.com"
         buttonText="Logar com Gmail"
         onSuccess={Logar}
         onFailure={responseGoogle}
