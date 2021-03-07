@@ -85,8 +85,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     height: "90%",
     [theme.breakpoints.down('sm')]: {
-      flexDirection: "column",
-       height: "20rem"
+      flexDirection: "column"
     },
   },
 
