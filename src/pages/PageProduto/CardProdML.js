@@ -85,7 +85,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     height: "90%",
     [theme.breakpoints.down('sm')]: {
-      flexDirection: "column"
+      flexDirection: "column",
+       height: "20rem"
     },
   },
 
@@ -98,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
       paddingLeft: "1rem",
       paddingRight: "1rem",
+       height: "20rem"
     },
   },
 
@@ -108,7 +110,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: "row",
       padding: "0.2rem",
-      marginBottom: "1rem"
+      marginBottom: "1rem",
+       height: "10rem"
     },
   },
 
@@ -125,6 +128,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "1rem",
       paddingRight: "1rem",
       marginLeft: "0rem",
+      height: "20rem"
     },
 
   },
