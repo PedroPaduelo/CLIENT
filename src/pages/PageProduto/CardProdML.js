@@ -109,8 +109,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: "row",
       padding: "0.2rem",
-      marginBottom: "1rem",
-       height: "10rem"
+      marginBottom: "1rem"
     },
   },
 
