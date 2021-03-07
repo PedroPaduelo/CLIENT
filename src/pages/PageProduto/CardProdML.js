@@ -56,10 +56,12 @@ const useStyles = makeStyles((theme) => ({
   
   cardMediaSelect: { 
     borderRadius: "8px",
+    width: "90%"
   },
 
   cardMedia: { 
     borderRadius: "8px",
+    width: "90%"
   },
   
   
