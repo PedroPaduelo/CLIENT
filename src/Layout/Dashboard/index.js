@@ -133,7 +133,6 @@ export default function Dashboard() {
               classes={classes}
             />
             <Navbar 
-              links={[1,2,3]} 
               classes={classes} 
             />
           </DashProvider>
@@ -149,8 +148,8 @@ export default function Dashboard() {
               <Grid container spacing={3}>
                 <Switch>
 
-                  <CustomRoute exact isPrivate path={"/Painel/CriarProdsVsPages"} component={CriarProdsVsPages} redirectTO={"/"}/>
-                  <CustomRoute exact isPrivate path={"/Painel/ListProds"} component={ListProds} redirectTO={"/"}/>
+                  <CustomRoute exact path={"/Painel/CriarProdsVsPages"} component={CriarProdsVsPages} redirectTO={"/"}/>
+                  <CustomRoute exact path={"/Painel/ListProds"} component={ListProds} redirectTO={"/"}/>
                 
                 </Switch>
               </Grid>

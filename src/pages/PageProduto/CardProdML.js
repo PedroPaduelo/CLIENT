@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
       paddingLeft: "1rem",
       paddingRight: "1rem",
       marginLeft: "0rem",
-      height: "20rem"
+      height: "50rem"
     },
 
   },
