@@ -16,8 +16,6 @@ function CriarProdsVsPages() {
 
   const [ listprod, slistprod ] = useState([]);
 
-  console.log(listprod.length)
-
     useEffect(() => {
         async function getItems() {
             try {
@@ -42,7 +40,7 @@ function CriarProdsVsPages() {
         {
           toggle ? <CadastraProd/> : 
             <> 
-               { listprod &&
+               { listprod.length = 0 &&
                     <SelectPage/> 
                }  
                 <ListProds/>   
