@@ -37,9 +37,6 @@ export default function NaveBar({classes}) {
     setSelectedIndex(index);
   };
 
-
-console.log(user.photoprofile)
-
   
     return (
       <Drawer

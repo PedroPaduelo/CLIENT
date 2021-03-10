@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { Grid } from '@material-ui/core';
 
@@ -7,11 +7,27 @@ import ListProds from '../ListProds';
 import CadastraProd from './CadastraProd';
 
 import Alert  from '../../components/Alert';
+import api from '../../services/api'
 
 import { ProductContext } from '../../Contexts/ProductContext';
 
 function CriarProdsVsPages() {
   const { toggle, alerta, handleAlert } = useContext(ProductContext)
+
+  const [ listprod, slistprod ] = useState([]);
+
+
+    useEffect(() => {
+        async function getItems() {
+            try {
+                const { data } = await api.get(`/ListProdutos`);
+                slistprod(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getItems();
+    },[]);
 
   return (
     <Grid
@@ -25,7 +41,9 @@ function CriarProdsVsPages() {
         {
           toggle ? <CadastraProd/> : 
             <> 
-                <SelectPage/> 
+               { listprod &&
+                    <SelectPage/> 
+               }  
                 <ListProds/>   
             </> 
         }
