@@ -51,7 +51,7 @@ export default function NaveBar({classes}) {
     >
       <div className={classes.toolbarIcon}>
 
-        <Avatar className={classes.avatar} src={user.photoprofile} />
+        <Avatar  src={user.photoprofile} />
         
         
         <Typography noWrap className={classes.userLogado}> 

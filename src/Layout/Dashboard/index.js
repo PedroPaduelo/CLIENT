@@ -3,7 +3,7 @@ import  React from 'react';
 import { Switch} from "react-router-dom";
 import { Container, Grid, } from '@material-ui/core';
 
-import { red } from '@material-ui/core/colors';
+
 import { makeStyles} from '@material-ui/core/styles';
 
 import Navbar from './Navbar';
@@ -100,9 +100,6 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton:{
     marginLeft: theme.spacing(1)
-  },
-  avatar: {
-    backgroundColor: red[500],
   },
   icone: {
     fontSize: "2.5rem",
