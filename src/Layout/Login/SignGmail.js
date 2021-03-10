@@ -25,7 +25,7 @@ export default function SignInSide() {
   const history = useHistory();
   const classes = useStyles();
 
-  const { handleSignup, handleListFilasUser} = useContext(AuthContext);
+  const { handleSignup } = useContext(AuthContext);
   
   
   const responseGoogle = (response) => {
@@ -37,12 +37,10 @@ export default function SignInSide() {
     const tokenId = response.tokenId
     const {data} = await api.post(`/CreateUser`, {tokenId})
 
-    const setContextUser =  await handleSignup(tokenId,data)
-                            await handleListFilasUser(data.user.email)
-
-    if(setContextUser){
-      history.push('/Painel')
-    }
+    await handleSignup(tokenId,data)
+                 
+    history.push('/Painel')
+    
   } 
 
 
