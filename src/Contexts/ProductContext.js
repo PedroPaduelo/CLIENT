@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect } from 'react';
 
 import api from '../services/api'
 import { AuthContext } from '../Contexts/AuthContext';
@@ -22,6 +22,17 @@ function ProductProvider({ children }) {
   });
 
 
+    useEffect(() => {
+        async function getItems() {
+            try {
+                const { data } = await api.get(`/ListProdutos/${user.email}`);
+                slistprod(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        getItems();
+    },[user]);
 
 
   const handleToggleProd = () => {
