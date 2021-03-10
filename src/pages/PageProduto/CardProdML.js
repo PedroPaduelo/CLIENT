@@ -100,7 +100,8 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
       paddingLeft: "1rem",
       paddingRight: "1rem",
-      height: "20rem"
+      height: "20rem",
+      display: "none"
     },
   },
 
