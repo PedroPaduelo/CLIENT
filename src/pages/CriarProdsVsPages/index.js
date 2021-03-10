@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 
 import { Grid } from '@material-ui/core';
 
@@ -7,30 +7,15 @@ import ListProds from '../ListProds';
 import CadastraProd from './CadastraProd';
 
 import Alert  from '../../components/Alert';
-import api from '../../services/api'
+
 
 import { ProductContext } from '../../Contexts/ProductContext';
 
-import { AuthContext } from '../../Contexts/AuthContext';
+
 
 function CriarProdsVsPages() {
-  const { toggle, alerta, handleAlert } = useContext(ProductContext)
-  const { user } = useContext(AuthContext)
-
-  const [ listprod, slistprod ] = useState([]);
-
-    useEffect(() => {
-        async function getItems() {
-            try {
-                const { data } = await api.get(`/ListProdutos/${user.email}`);
-                slistprod(data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        getItems();
-    },[user]);
-
+  const { toggle, alerta, handleAlert, listprod } = useContext(ProductContext)
+ 
   return (
     <Grid
       container

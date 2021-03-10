@@ -1,13 +1,14 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 
 import api from '../services/api'
-
+import { AuthContext } from '../Contexts/AuthContext';
 
 
 const ProductContext = createContext();
 
 function ProductProvider({ children }) {
 
+  const { user } = useContext(AuthContext)
   const [ toggle, stoggle ] = useState(false);
   const [ listprod, slistprod ] = useState([]);
   const [ prod, sprod ] = useState([]);
@@ -40,12 +41,13 @@ function ProductProvider({ children }) {
       mensagem: "Produto Criado com sucesso!!!",
       type: "success"
     })
+    handleListProd(user.email)
     return id
   };
 
-  async function handleListProd(){
+  async function handleListProd(email){
     try {
-      const { data } = await api.get(`/ListProdutos`);
+      const { data } = await api.get(`/ListProdutos/${email}`);
       slistprod(data)
     } catch (error) {
       console.log(error)

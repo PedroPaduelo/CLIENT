@@ -217,6 +217,7 @@ export default function Album({prod}) {
                     />
                   </Grid>
 
+                { prod.img2 &&
                   <Grid item xs={12} className={classes.conteinerDefinicaoSelectImgItem}>
                     <CardMedia
                       component="img"
@@ -226,7 +227,9 @@ export default function Album({prod}) {
                       onClick={() => {selectImagem(prod.img2)}}
                     />
                   </Grid>
+                }
 
+                { prod.img3 && 
                   <Grid item xs={12} className={classes.conteinerDefinicaoSelectImgItem}>
                     <CardMedia
                       component="img"
@@ -236,6 +239,7 @@ export default function Album({prod}) {
                       onClick={() => {selectImagem(prod.img3)}}
                     />
                   </Grid>
+                }
 
                 </Grid>
 

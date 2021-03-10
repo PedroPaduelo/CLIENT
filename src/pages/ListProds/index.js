@@ -27,7 +27,6 @@ export default function DenseTable() {
   const [ listprod, slistprod ] = useState([]);
   const { user } = useContext(AuthContext)
 
-
     useEffect(() => {
         async function getItems() {
             try {
@@ -39,8 +38,6 @@ export default function DenseTable() {
         }
         getItems();
     },[user]);
-
-
 
 
   return (
