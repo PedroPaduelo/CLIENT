@@ -43,7 +43,7 @@ function CriarProdsVsPages() {
         {
           toggle ? <CadastraProd/> : 
             <> 
-               { listprod.length = 0 &&
+               { listprod.length === 0 &&
                     <SelectPage/> 
                }  
                 <ListProds/>   
