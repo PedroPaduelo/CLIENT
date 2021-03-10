@@ -16,7 +16,7 @@ function CriarProdsVsPages() {
 
   const [ listprod, slistprod ] = useState([]);
 
-  console.log(listprod.length())
+  console.log(listprod.length)
 
     useEffect(() => {
         async function getItems() {
