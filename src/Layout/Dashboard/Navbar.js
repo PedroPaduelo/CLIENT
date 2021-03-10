@@ -38,7 +38,7 @@ export default function NaveBar({classes}) {
   };
 
 
-
+console.log(user.photoprofile)
 
   
     return (
