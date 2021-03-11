@@ -39,7 +39,7 @@ export default function SignInSide() {
 
     await handleSignup(tokenId,data)
                  
-    history.push('/Painel')
+    history.push('/Painel/CriarProdsVsPages')
     
   } 
 

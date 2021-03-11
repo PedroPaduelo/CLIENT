@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   image: {
-    backgroundImage: 'url(https://mentalidadeempreendedora.com.br/wp-content/uploads/2017/01/nomade-digital.jpg)',
+    backgroundImage: 'url(https://www.kindpng.com/picc/m/787-7877257_illustration-web-design-frontend-hd-png-download.png)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
     backgroundPosition: 'center' 

@@ -21,7 +21,7 @@ export default function SignInSide() {
     const setContextUser =  await handleLogin(tokenId,data)
 
     if(setContextUser){
-      history.push('/Painel')
+      history.push('/Painel/CriarProdsVsPages')
     }
   } 
 
