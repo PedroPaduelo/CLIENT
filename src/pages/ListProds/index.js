@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,70 +10,72 @@ import Paper from '@material-ui/core/Paper';
 
 import Link from '@material-ui/core/Link';
 
-import api from '../../services/api'
-import { AuthContext } from '../../Contexts/AuthContext';
+import { ProductContext } from '../../Contexts/ProductContext';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   table: {
-    minWidth: 650,
+    minWidth: 150,
   },
   tablemargin:{
       marginTop: "2rem"
-  }
-});
+  },
+
+  colunasExit:{
+    [theme.breakpoints.down('sm')]: {
+      display: "none"
+    },
+  },
+
+ 
+    
+}));
 
 export default function DenseTable() {
   const classes = useStyles();
-  const [ listprod, slistprod ] = useState([]);
-  const { user } = useContext(AuthContext)
-
-    useEffect(() => {
-        async function getItems() {
-            try {
-                const { data } = await api.get(`/ListProdutos/${user.email}`);
-                slistprod(data)
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        getItems();
-    },[user]);
-
+  const { listprod } = useContext(ProductContext)
 
   return (
     <TableContainer component={Paper} className={classes.tablemargin}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell align="left">Nome</TableCell>
-            <TableCell align="left">Status</TableCell>
-            <TableCell align="left">Preço</TableCell>
-            <TableCell align="left">Link da pragina</TableCell>
-            <TableCell align="left">Ir para pagina</TableCell>
+            <TableCell align="left" >Nome</TableCell>
+            <TableCell align="left" className={classes.colunasExit}>Status</TableCell>
+            <TableCell align="left" className={classes.colunasExit}>Preço</TableCell>
+            <TableCell align="left" className={classes.colunasExit}>Link da pragina</TableCell>
+            <TableCell align="left" >Ir para pagina</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {listprod.map((row) => (
             <TableRow key={row.id}>
-              <TableCell align="left">
+              <TableCell align="left" >
                 {row.produtcname}
               </TableCell>
 
-              <TableCell align="left">
+              <TableCell align="left" className={classes.colunasExit}>
                 {row.statusprodutc}
               </TableCell>
 
-              <TableCell align="left">
+              <TableCell align="left" className={classes.colunasExit}>
                 {row.price}
               </TableCell>
 
-              <TableCell align="left">
+              <TableCell align="left" className={classes.colunasExit}>
                     {row.linkpage}/{row.id}
               </TableCell>
 
-              <TableCell align="left">
+              <TableCell align="left" >
                     <Link href={`/${row.linkpage}/${row.id}`} >
                         Visualizar
+                    </Link>
+
+                    <Link href={`/${row.linkpage}/${row.id}`} >
+                        Edit
+                    </Link>
+
+                    <Link href={`/${row.linkpage}/${row.id}`} >
+                        Delet
                     </Link>
               </TableCell>
 

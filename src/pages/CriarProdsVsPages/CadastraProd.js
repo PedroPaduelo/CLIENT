@@ -45,8 +45,18 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     display: 'flex',
     flexDirection: "column", 
-    marginTop: "1rem"
+    marginTop: "1rem",
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: "row"
+    },
+
+
   },
+
+
+
+
+
   gridItemBtn:{
     justifyContent: 'center',
     width: "100%",
@@ -69,6 +79,9 @@ const useStyles = makeStyles((theme) => ({
   },
   
 }));
+
+
+
 
 
 function Creatprod() {
@@ -95,6 +108,9 @@ function Creatprod() {
     const [ linkbuy, slinkbuy ] = useState();
     const [ price, sprice ] = useState();
     const [ linkpage, slinkpage ] = useState();
+
+
+
 
   async function creatrdProd(){
 
@@ -162,7 +178,7 @@ function Creatprod() {
 
 
 
-          <Grid item xs={4} className={classes.gridItemImg}>
+          <Grid item xs={12} sm={4} className={classes.gridItemImg}>
             <TextField
               id="outlined-multiline-static"
               label="Imagem 1"
@@ -185,7 +201,7 @@ function Creatprod() {
 
 
 
-          <Grid item xs={4} className={classes.gridItemImg}>
+          <Grid item xs={12} sm={4} className={classes.gridItemImg}>
             <TextField
               id="outlined-multiline-static"
               label="Imagem 2"
@@ -207,7 +223,7 @@ function Creatprod() {
 
 
 
-          <Grid item xs={4} className={classes.gridItemImg}>
+          <Grid item xs={12} sm={4} className={classes.gridItemImg}>
             <TextField
               id="outlined-multiline-static"
               label="Imagem 3"
@@ -226,6 +242,19 @@ function Creatprod() {
               />
             }
           </Grid>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -259,7 +288,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={6} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} className={classes.gridItem}>
             <TextField
               id="outlined-multiline-static"
               label="Descrição do produt 2"
@@ -273,7 +302,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={6} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} className={classes.gridItem}>
             <TextField
               id="outlined-multiline-static"
               label="Descrição do produt 3"
@@ -288,7 +317,13 @@ function Creatprod() {
           </Grid>
 
 
-          <Grid item xs={3} className={classes.gridItem}>
+
+
+
+
+
+
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <TextField
               label="Preço"
               id="standard-start-adornment"
@@ -302,7 +337,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <TextField 
               id="standard-basic" 
               label="Pixel do facebook" 
@@ -313,7 +348,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <TextField 
               id="standard-basic" 
               label="Googel analitic" 
@@ -324,7 +359,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={3} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <TextField 
               id="standard-basic" 
               label="Whast do vendedor" 
@@ -336,7 +371,22 @@ function Creatprod() {
           </Grid>
 
 
-          <Grid item xs={2} className={classes.gridItem}>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <Grid item xs={12} sm={6} md={2} className={classes.gridItem}>
             <TextField 
               id="standard-basic"
               label="Status" 
@@ -347,7 +397,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={4} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
             <TextField 
               id="standard-basic" 
               label="Link do pagamento" 
@@ -358,7 +408,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={6} className={classes.gridItem}>
+          <Grid item xs={12} sm={12} md={6}className={classes.gridItem}>
             <TextField
               label="Link da pagina"
               id="standard-start-adornment"

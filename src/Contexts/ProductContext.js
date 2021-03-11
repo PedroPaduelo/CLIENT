@@ -10,6 +10,8 @@ function ProductProvider({ children }) {
 
   const { user } = useContext(AuthContext)
   const [ toggle, stoggle ] = useState(false);
+  const [ toggleBtn, stoggleBtn ] = useState(false);
+
   const [ listprod, slistprod ] = useState([]);
   const [ prod, sprod ] = useState([]);
 
@@ -27,6 +29,10 @@ function ProductProvider({ children }) {
             try {
                 const { data } = await api.get(`/ListProdutos/${user.email}`);
                 slistprod(data)
+
+                if(data.length === 0 )
+                stoggleBtn(true)
+
             } catch (error) {
                 console.log(error)
             }
@@ -37,6 +43,7 @@ function ProductProvider({ children }) {
 
   const handleToggleProd = () => {
     stoggle(!toggle);
+    stoggleBtn(!toggleBtn)
   };
 
 
@@ -44,7 +51,6 @@ function ProductProvider({ children }) {
 
   async function handleCreatedProd(dados){
     const id = await api.post(`/CreatProdutos`, dados)
-    stoggle(!toggle);
     salerta({
       open: true,
       vertical: 'top',
@@ -53,6 +59,7 @@ function ProductProvider({ children }) {
       type: "success"
     })
     handleListProd(user.email)
+    
     return id
   };
 
@@ -60,6 +67,7 @@ function ProductProvider({ children }) {
     try {
       const { data } = await api.get(`/ListProdutos/${email}`);
       slistprod(data)
+      stoggle(!toggle);
     } catch (error) {
       console.log(error)
     }
@@ -100,6 +108,7 @@ function ProductProvider({ children }) {
       alerta,
       listprod,
       prod,
+      toggleBtn,
     }}>
       {children}
     </ProductContext.Provider>
