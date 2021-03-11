@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 
-import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,173 +13,93 @@ import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import ReactGA from 'react-ga';
 
+import Header from './Header';
+import ImagensProd from './ImagensProd';
+import ImagenProdPrinc from './ImagenProdPrinc';
+
 
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(0),
-  },
-  marginTop1: {
-    marginTop: "0.1rem"
-  },
-  marginTop2: {
-    marginTop: "2rem"
-  },
-  marginTop3: {
-    marginTop: "3rem"
-  },
-  marginTop4: {
-    marginTop: "4rem"
-  },
-  marginTop5: {
-    marginTop: "5rem"
-  },
-
-
-  fontSize: {
-    fontSize: "2rem",
-    marginTop: "0.3rem"
-  },
-
-
-
-
-  alingimgaem: {
-    justifyContent: "center",
-    alignContent: "center",
-  },
-
-
-
-
-
-  
-  cardMediaSelect: { 
-    borderRadius: "8px",
-    width: "100%"
-  },
-
-  cardMedia: { 
-    borderRadius: "8px",
-    width: "100%"
-  },
-  
-  
-  conteiner:{
-    display: "flex",
-    marginTop: "3rem",
+    cardContent: {
+        marginTop: "1rem"
+    },
     
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column"
+
+    conteiner:{
+        display: "flex",
+
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column"
+        },
     },
-  },
 
+    conteinerImgs:{
+        display: "flex",
+        width: "100%",
+        justifyContent: "space-around",
 
-
-  conteinerDescPriceCompra: {
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column"
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column",
+            justifyContent: "center",
+        },
     },
-  },
-  
 
-  conteinerImgs:{
-    display: "flex",
-    height: "90%",
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column"
+    fontSize: {
+        fontSize: "2rem",
+        marginTop: "0.3rem"
     },
-  },
 
-  conteinerDefinicaoSelectImg: {
-    display: 'flex',
-    paddingLeft: "1rem",
-    flexDirection: "column",
+
+    conteinerDescPriceCompra: {
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column"
+        },
+    },
+
+    gridItemPriceCompra:{
+        justifyContent: 'space-between',
+        display: 'flex',
+        marginTop: "2rem",
+
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: "column"
+        },
+    },
+
+    fabbtn:{
+        width: "4rem"
+    },
+
+    divMarging:{
+        display: 'flex'
+    },
+
+    btn:{
+        marginRight: "2rem",
+        marginTop: "0.5rem"
+    },
     
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "row",
-      paddingLeft: "1rem",
-      paddingRight: "1rem",
-      height: "20rem",
-      display: "none"
-    },
-  },
-
-  conteinerDefinicaoSelectImgItem: {
-    display: 'flex',
-    flexDirection: "column",
-  
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "row",
-      padding: "0.2rem",
-      marginBottom: "1rem"
-    },
-  },
-
-  conteinerImgSelect:{
-    paddingLeft: "0.5rem",
-    paddingRight: "0.5rem",
-    display: 'flex',
-    justifyContent: "center",
-    alignContent: "center",
-    marginLeft: "6rem",
-
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "row",
-      paddingLeft: "1rem",
-      paddingRight: "1rem",
-      marginLeft: "0rem",
-      height: "50rem"
-    },
-
-  },
-  
-
-  gridItemPriceCompra:{
-    justifyContent: 'space-between',
-    display: 'flex',
-    marginTop: "2rem",
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: "column"
-    },
-  },
-
-
-
-  fabbtn:{
-      width: "4rem"
-  },
-  divMarging:{
-    display: 'flex'
-  },
-  btn:{
-    marginRight: "2rem",
-    marginTop: "0.5rem"
-  },
-  cardContent: {
-    marginTop: "1rem"
-  },
-  textFieldline: {
-        content: "none",
-  }
+    textFieldline: {
+            content: "none",
+    }
+    
 }));
 
 
 export default function Album({prod}) {
+    const classes = useStyles();
 
     ReactGA.initialize(prod.produtcfile, {debug : true });
     ReactGA.pageview(window.location.pathname + window.location.search);
 
-    const classes = useStyles();
-
-    const [ imgselect, simgselect ] = useState(prod.img1);
-
+    const [ imgselect, simgselect ] = useState();
+    
     useEffect(()=>{
       simgselect(prod.img1)
     },[prod])
 
-    async function selectImagem(img){
-      simgselect(img)
-    }
+
+
+
 
   return (
     <React.Fragment>
@@ -189,76 +108,29 @@ export default function Album({prod}) {
           className={classes.cardContent}
         >
 
-          <Grid item xs={12} >
-            <Typography variant="h3" align="center" >
-              {prod.produtcname}
-            </Typography>
-          </Grid>
-            
-          <Grid item xs={12} className={classes.marginTop1}>
-            <Typography variant="h6" align="center" >
-              {prod.poductsubhead}
-            </Typography>
-          </Grid>
+            <Header 
+                produtcname={prod.produtcname} 
+                poductsubhead={prod.poductsubhead}
+            />
 
             <Grid item xs={12} className={classes.conteiner}>
 
-
-              <Grid item xs={12} sm={12} md={7} className={classes.conteinerImgs} >
-
-                <Grid item xs={12} sm={12} md={2} className={classes.conteinerDefinicaoSelectImg} >
-                  
-                  <Grid item xs={12} className={classes.conteinerDefinicaoSelectImgItem}>
-                    <CardMedia
-                      component="img"
-                      className={classes.cardMediaSelect}
-                      image={prod.img1}
-                      title="Image title"
-                      onClick={() => {selectImagem(prod.img1)}}
+                <Grid item xs={12} sm={12} md={6} className={classes.conteinerImgs} >
+                    <ImagensProd 
+                        img1={prod.img1}
+                        img2={prod.img2}
+                        img3={prod.img3}
+                        simgselect={simgselect}
                     />
-                  </Grid>
 
-                { prod.img2 &&
-                  <Grid item xs={12} className={classes.conteinerDefinicaoSelectImgItem}>
-                    <CardMedia
-                      component="img"
-                      className={classes.cardMediaSelect}
-                      image={prod.img2}
-                      title="Image title"
-                      onClick={() => {selectImagem(prod.img2)}}
+                    <ImagenProdPrinc 
+                        imgselect={imgselect}
                     />
-                  </Grid>
-                }
-
-                { prod.img3 && 
-                  <Grid item xs={12} className={classes.conteinerDefinicaoSelectImgItem}>
-                    <CardMedia
-                      component="img"
-                      className={classes.cardMediaSelect}
-                      image={prod.img3}
-                      title="Image title"
-                      onClick={() => {selectImagem(prod.img3)}}
-                    />
-                  </Grid>
-                }
-
                 </Grid>
 
-                <Grid item xs={12} sm={12} md={8} className={classes.conteinerImgSelect} >
-                  <CardMedia
-                    component="img"
-                    className={classes.cardMedia}
-                    image={imgselect}
-                    title="Image title"
-                  />
-                </Grid>
-
-              </Grid>
 
 
-
-
-              <Grid item xs={12} sm={12} md={5} className={classes.conteinerDescPriceCompra}>
+              <Grid item xs={12} sm={12} md={6} className={classes.conteinerDescPriceCompra}>
                   
                 <Grid item xs={12}>
                     <Typography variant="h4" align="left"  gutterBottom>
