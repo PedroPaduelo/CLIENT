@@ -7,6 +7,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import FindInPageIcon from '@material-ui/icons/FindInPage';
 
 import Link from '@material-ui/core/Link';
 
@@ -67,16 +71,18 @@ export default function DenseTable() {
 
               <TableCell align="left" >
                     <Link href={`/${row.linkpage}/${row.id}`} >
-                        Visualizar
+                        <IconButton>
+                            <FindInPageIcon/> 
+                        </IconButton>
                     </Link>
 
-                    <Link href={`/${row.linkpage}/${row.id}`} >
-                        Edit
-                    </Link>
+                    <IconButton>
+                       <EditIcon/> 
+                    </IconButton>
 
-                    <Link href={`/${row.linkpage}/${row.id}`} >
-                        Delet
-                    </Link>
+                    <IconButton>
+                        <DeleteForeverIcon/>
+                    </IconButton>
               </TableCell>
 
             </TableRow>
