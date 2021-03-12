@@ -58,9 +58,13 @@ function ProductProvider({ children }) {
 
 
               const count = await api.get(`/CountProdUser/${user.email}`);
-              scountProdUser(count.data.count)
 
-              console.log(count.data.count)
+
+              const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
+
+              scountProdUser(porcentagemProdCriados)
+
+              console.log(porcentagemProdCriados)
 
               if(data.length > user.capacidade )
               stoggleSelectPage(false)
