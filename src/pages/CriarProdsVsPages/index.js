@@ -4,13 +4,22 @@ import { Grid } from '@material-ui/core';
 import SelectPage from './SelectPage';
 import ListProds from '../ListProds';
 import CadastraProd from './CadastraProd';
+import AtualizaProd from './AtualizaProd';
 import Alert  from '../../components/Alert';
 import { ProductContext } from '../../Contexts/ProductContext';
 
 
 
 function CriarProdsVsPages() {
-  const { toggle, alerta, handleAlert, listprod, toggleBtn } = useContext(ProductContext)
+  const { 
+    toggleCria, 
+    toggleEdit,
+    toggleSelectPage,
+    toggleListProd,
+
+    alerta, 
+    handleAlert, 
+  } = useContext(ProductContext)
  
   return (
     <Grid
@@ -19,17 +28,28 @@ function CriarProdsVsPages() {
       spacing={3}
     >
       <Alert alerta={alerta} handleClose={handleAlert}/>
-        {  toggleBtn &&
-            <SelectPage/> 
+
+        {  toggleSelectPage &&
+          <SelectPage/> 
         }  
 
-        { toggle && <CadastraProd/> }
+        { 
+          toggleCria && <CadastraProd/> 
+        }
 
-        { listprod.length !== 0 &&
-            <Grid item xs={12}>
-                <ListProds/>  
-            </Grid>
-        } 
+        { 
+          toggleEdit && <AtualizaProd/> 
+        }
+
+        { 
+          toggleListProd && 
+          <Grid item xs={12}>
+            <ListProds/>  
+          </Grid> 
+        }
+
+        
+
     </Grid>
     
 

@@ -87,7 +87,7 @@ const useStyles = makeStyles((theme) => ({
 function Creatprod() {
     const classes = useStyles();
 
-    const { handleCreatedProd, handleToggleProd, editcamp } = useContext(ProductContext)
+    const { handleCreatedProd, handleToggleCriaProdGoBack, editcamp } = useContext(ProductContext)
     const { user } = useContext(AuthContext)
 
     const [ produtcname, sprodutcname ] = useState();
@@ -104,7 +104,7 @@ function Creatprod() {
     const [ pixelfacebook, spixelfacebook ] = useState();
     const [ googleanalitic, sgoogleanalitic ] = useState();
     const [ whatsvendedor, swhatsvendedor ] = useState();
-    const [ statusprodutc, sstatusprodutc ] = useState();
+    const [ statusprodutc ] = useState("Ativo");
     const [ linkbuy, slinkbuy ] = useState();
     const [ price, sprice ] = useState();
     const [ linkpage, slinkpage ] = useState();
@@ -152,7 +152,7 @@ function Creatprod() {
         <Button 
           variant="contained" 
           color="primary" 
-          onClick={handleToggleProd}
+          onClick={handleToggleCriaProdGoBack}
         >
           Voltar
         </Button>
@@ -164,6 +164,11 @@ function Creatprod() {
           spacing={2}
           className={classes.root}
         >
+
+
+
+
+
           <Grid item xs={12} className={classes.gridItem}>
             <TextField 
               id="standard-basic" 
@@ -198,9 +203,6 @@ function Creatprod() {
             }
           </Grid>
 
-
-
-
           <Grid item xs={12} sm={4} className={classes.gridItemImg}>
             <TextField
               id="outlined-multiline-static"
@@ -220,8 +222,6 @@ function Creatprod() {
               />
             }
           </Grid>
-
-
 
           <Grid item xs={12} sm={4} className={classes.gridItemImg}>
             <TextField
@@ -247,18 +247,6 @@ function Creatprod() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
           <Grid item xs={12} className={classes.gridItem}>
             <TextField
               id="outlined-multiline-static"
@@ -272,6 +260,8 @@ function Creatprod() {
               disabled={editcamp}
             />
           </Grid>
+
+
 
           
           <Grid item xs={12} className={classes.gridItem}>
@@ -315,10 +305,6 @@ function Creatprod() {
               disabled={editcamp}
             />
           </Grid>
-
-
-
-
 
 
 
@@ -372,32 +358,7 @@ function Creatprod() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <Grid item xs={12} sm={6} md={2} className={classes.gridItem}>
-            <TextField 
-              id="standard-basic"
-              label="Status" 
-              fullWidth
-              value={statusprodutc}
-              onChange={(e)=>{sstatusprodutc(e.target.value)}}
-              disabled={editcamp}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={4} className={classes.gridItem}>
+          <Grid item xs={12} sm={6} md={6} className={classes.gridItem}>
             <TextField 
               id="standard-basic" 
               label="Link do pagamento" 
@@ -422,6 +383,8 @@ function Creatprod() {
             />
           </Grid>
           
+
+
 
           <Grid item xs={12} className={classes.gridItemBtn} >
             <Button 

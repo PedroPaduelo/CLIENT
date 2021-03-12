@@ -28,15 +28,15 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       display: "none"
     },
-  },
-
- 
-    
+  },    
 }));
 
 export default function DenseTable() {
   const classes = useStyles();
-  const { listprod } = useContext(ProductContext)
+  const { listprod, handleToggleEditProd, handDeletProd } = useContext(ProductContext)
+
+
+
 
   return (
     <TableContainer component={Paper} className={classes.tablemargin}>
@@ -76,11 +76,11 @@ export default function DenseTable() {
                         </IconButton>
                     </Link>
 
-                    <IconButton>
+                    <IconButton onClick={() => {handleToggleEditProd(row)}}>
                        <EditIcon/> 
                     </IconButton>
 
-                    <IconButton>
+                    <IconButton onClick={() => {handDeletProd(row.id)}}> 
                         <DeleteForeverIcon/>
                     </IconButton>
               </TableCell>

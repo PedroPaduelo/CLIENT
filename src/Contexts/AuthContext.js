@@ -15,31 +15,32 @@ const link = [
   }
 ]
 
-// const dadosUser = {
-//   "email": "nnomad20@gmail.com",
+const dadosUser = {
+  "email": "nnomad20@gmail.com",
 
-//   "fistname": "Myke",
-//   "lastname": "Pedro Paduelo",
+  "fistname": "Myke",
+  "lastname": "Pedro Paduelo",
 
-//   "descstatus": "Ativo",
-//   "desctipouser": "Segundo Aprovador",
-//   "nomeorganizacao": "Serviços",
+  "descstatus": "Ativo",
+  "desctipouser": "Segundo Aprovador",
+  "nomeorganizacao": "Serviços",
+  "capacidade": 10,
 
-//   "created_at": "2020-01-03T03:00:00.000Z",
-//   "updated_at": "2020-01-03T03:00:00.000Z",
+  "created_at": "2020-01-03T03:00:00.000Z",
+  "updated_at": "2020-01-03T03:00:00.000Z",
 
-//   "id_org": 1,
-//   "id_status": 1,
-//   "id_tipouser": 3,
-//   "statusacessos": 1,
-// }
+  "id_org": 1,
+  "id_status": 1,
+  "id_tipouser": 3,
+  "statusacessos": 1,
+}
 
 
 function AuthProvider({ children }) {
 
   const [ authenticated, setAuthenticated ] = useState(false);
   const [ loading, setLoading ] = useState(true);
-  const [ user, setUser ] = useState();
+  const [ user, setUser ] = useState(dadosUser);
   const [ links, slinks ] = useState(link);
 
   useEffect(() => {
@@ -64,6 +65,10 @@ function AuthProvider({ children }) {
       setLoading(false)
     }
     slinks(link)
+
+    
+    setAuthenticated(true);
+    setLoading(false)
   }, []);
 
 

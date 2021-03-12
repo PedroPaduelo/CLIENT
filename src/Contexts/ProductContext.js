@@ -6,14 +6,41 @@ import { AuthContext } from '../Contexts/AuthContext';
 
 const ProductContext = createContext();
 
+
+
+const prodFisrt = {
+  email_user: "",
+  googleanalitic: "",
+  id: "",
+  img1: "",
+  img2: "",
+  img3: "",
+  linkbuy: "",
+  linkpage: "",
+  pixelfacebook: "",
+  poductsubhead: "",
+  price: "",
+  produtcdescription1: "",
+  produtcdescription2: "",
+  produtcdescription3: "",
+  produtcname: "",
+  statusprodutc: "",
+  whatsvendedor: "",
+}
+
+
+
 function ProductProvider({ children }) {
 
   const { user } = useContext(AuthContext)
-  const [ toggle, stoggle ] = useState(false);
-  const [ toggleBtn, stoggleBtn ] = useState(false);
+  const [ toggleSelectPage, stoggleSelectPage ] = useState();
+  const [ toggleListProd, stoggleListProd ] = useState(true);
+  const [ toggleCria, stoggleCria ] = useState(false);
+  const [ toggleEdit, stoggleEdit ] = useState(false);
+
 
   const [ listprod, slistprod ] = useState([]);
-  const [ prod, sprod ] = useState([]);
+  const [ prod, sprod ] = useState(prodFisrt);
 
   const [ alerta, salerta ] = useState({
     open: false,
@@ -24,27 +51,52 @@ function ProductProvider({ children }) {
   });
 
 
-    useEffect(() => {
-        async function getItems() {
-            try {
-                const { data } = await api.get(`/ListProdutos/${user.email}`);
-                slistprod(data)
+  useEffect(() => {
+      async function getItems() {
+          try {
+              const { data } = await api.get(`/ListProdutos/${user.email}`);
+              slistprod(data)
 
-                if(data.length === 0 )
-                stoggleBtn(true)
+              if(data.length > user.capacidade )
+              stoggleSelectPage(false)
+              else
+              stoggleSelectPage(true)
 
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        getItems();
-    },[user]);
+          } catch (error) {
+              console.log(error)
+          }
+      }
+      getItems();
+  },[user]);
 
 
-  const handleToggleProd = () => {
-    stoggle(!toggle);
-    stoggleBtn(!toggleBtn)
+  const handleToggleCriaProd = () => {
+    stoggleListProd(false)
+    stoggleSelectPage(false)
+    stoggleCria(true);
   };
+
+  const handleToggleCriaProdGoBack = () => {
+    stoggleListProd(true)
+    stoggleCria(false)
+    stoggleSelectPage(true)
+  };
+
+
+
+  const handleToggleEditProd = (prod) => {
+    sprod(prod)
+    stoggleListProd(false)
+    stoggleSelectPage(false)
+    stoggleEdit(true)
+  };
+
+  async function handleToggleEditProdGoBack(){
+    stoggleListProd(true)
+    await handleListProd(user.email)
+    stoggleEdit(false)
+  };
+
 
 
 
@@ -58,20 +110,76 @@ function ProductProvider({ children }) {
       mensagem: "Produto Criado com sucesso!!!",
       type: "success"
     })
-    handleListProd(user.email)
+
+    await handleListProd(user.email)
+    stoggleListProd(true)
+    stoggleCria(false)
     
     return id
   };
+
+  async function handleUpdataProd(dados){
+    await api.put(`/UpdateProdutos`, dados)
+
+    salerta({
+      open: true,
+      vertical: 'top',
+      horizontal: 'center',
+      mensagem: "Produto Alterado com sucesso!!!",
+      type: "success"
+    })
+
+    await handleListProd(user.email)
+    stoggleListProd(true)
+    stoggleEdit(false)
+
+  };
+
+
+
 
   async function handleListProd(email){
     try {
       const { data } = await api.get(`/ListProdutos/${email}`);
       slistprod(data)
-      stoggle(!toggle);
+
+      if(data.length > user.capacidade )
+      stoggleSelectPage(false)
+      else
+      stoggleSelectPage(true)
+
     } catch (error) {
       console.log(error)
     }
   };
+
+  async function handDeletProd(id){
+    try {
+      await api.delete(`/DeleteProdutos/${id}`);
+
+      await handleListProd(user.email)
+      
+      salerta({
+        open: true,
+        vertical: 'top',
+        horizontal: 'center',
+        mensagem: "Produto Deletado com sucesso!!!",
+        type: "success"
+      })
+
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+
+
+
+
+
+
+
+
 
   async function handleProd(id) {
     try {
@@ -98,17 +206,26 @@ function ProductProvider({ children }) {
 
   return (
     <ProductContext.Provider value={{ 
-      handleToggleProd, 
+      handleToggleCriaProd, 
+      handleToggleEditProd,
+      handleToggleEditProdGoBack,
+      handleToggleCriaProdGoBack,
+
       handleCreatedProd, 
+      handleUpdataProd,
       handleListProd,
+      handDeletProd,
+
       handleProd,
       handleAlert,
 
-      toggle,
+      toggleCria,
       alerta,
       listprod,
       prod,
-      toggleBtn,
+      toggleSelectPage,
+      toggleEdit,
+      toggleListProd
     }}>
       {children}
     </ProductContext.Provider>

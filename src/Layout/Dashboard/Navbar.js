@@ -11,11 +11,9 @@ import {
   Avatar,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  Icon
 } from '@material-ui/core';
 
-
+import ListAltIcon from '@material-ui/icons/ListAlt';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 
@@ -29,7 +27,7 @@ export default function NaveBar({classes}) {
   
   const { open, handleNaveBarClose } = useContext(DashContext);
 
-  const { links, user } = useContext(AuthContext);
+  const {  user } = useContext(AuthContext);
 
   const [ selectedIndex, setSelectedIndex ] = useState(0);
 
@@ -64,9 +62,9 @@ export default function NaveBar({classes}) {
       <Divider />
       
         <List>
-          {links.map((link, i) => (
+       
             <NavLink  
-            key={i}
+      
             activeClassName={classes.naveLink} 
             isActive={(match, location) => {
               if (!match) {
@@ -74,22 +72,25 @@ export default function NaveBar({classes}) {
               }
               return 1;
             }}
-            to={link.path}
+            to="/Painel/CriarProdsVsPages" 
             >
               <ListItem button
-              selected={selectedIndex === i}
-              onClick={(event) => handleListItemClick(event, i)}>
+              selected={selectedIndex === 1}
+              onClick={(event) => handleListItemClick(event, 1)}>
 
                   <ListItemIcon>
-                    <Icon className={`${link.icone} ${classes.icone} ${classes.listItemIcon}`}></Icon>
+                    <ListAltIcon/>
                   </ListItemIcon>
-
-                  <ListItemText primary={link.name}/>
+                 
+                  <Typography variant="button" display="block" gutterBottom>
+                    Produtos
+                  </Typography>
+              
 
               </ListItem>
 
             </NavLink >
-          ))}
+         
         </List>
 
       <Divider/>

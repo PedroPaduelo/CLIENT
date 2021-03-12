@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 function Creatprod() {
   const classes = useStyles();
 
-  const { handleToggleProd } = useContext(ProductContext)
+  const { handleToggleCriaProd } = useContext(ProductContext)
 
   return (
 
@@ -48,7 +48,7 @@ function Creatprod() {
         </Typography>
 
         <Button variant="contained" color="primary" className={classes.btn} 
-          onClick={handleToggleProd}
+          onClick={handleToggleCriaProd}
         >
           Cria agora
         </Button>
