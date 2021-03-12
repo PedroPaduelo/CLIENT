@@ -79,7 +79,7 @@ export default function NaveBar({classes}) {
               onClick={(event) => handleListItemClick(event, 1)}>
 
                   <ListItemIcon>
-                    <ListAltIcon/>
+                    <ListAltIcon className={classes.iconButton}/>
                   </ListItemIcon>
                  
                   <Typography variant="button" display="block" gutterBottom>
