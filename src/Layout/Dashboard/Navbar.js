@@ -82,7 +82,7 @@ export default function NaveBar({classes}) {
                     <ListAltIcon className={classes.iconButton}/>
                   </ListItemIcon>
                  
-                  <Typography variant="button" display="block" gutterBottom>
+                  <Typography className={classes.marginTop} variant="button" display="block" gutterBottom>
                     Produtos
                   </Typography>
               

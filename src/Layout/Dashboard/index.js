@@ -103,14 +103,16 @@ const useStyles = makeStyles((theme) => ({
   },
   icone: {
     fontSize: "2.5rem",
-    color: "#3F51B5"
   },
   naveLink:{
     color: "#3F51B5"
   },
   listItemIcon:{
     width:"100%"
-  }
+  },
+  marginTop:{
+    marginTop: theme.spacing(1)
+  },
 }));
 
 
