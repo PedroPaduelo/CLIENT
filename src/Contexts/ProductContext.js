@@ -58,8 +58,9 @@ function ProductProvider({ children }) {
 
 
               const count = await api.get(`/CountProdUser/${user.email}`);
-              scountProdUser(count.data)
+              scountProdUser(count.data.count)
 
+              console.log(count.data.count)
 
               if(data.length > user.capacidade )
               stoggleSelectPage(false)
