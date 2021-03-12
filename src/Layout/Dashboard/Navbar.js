@@ -44,14 +44,14 @@ export default function NaveBar({classes}) {
       }}
       open={open}
     >
-      <div className={classes.toolbarIcon}>
+      <div className={classes.toolbarIcon_o}>
 
-        <Avatar  src={user.photoprofile} />
-        
-        
-        <Typography noWrap className={classes.userLogado}> 
-          {user.fistname} {user.lastname}
-        </Typography>
+        <div className={classes.toolbarIcon}>
+          <Avatar  src={user.photoprofile} />
+          <Typography noWrap className={classes.userLogado}> 
+            {user.fistname} {user.lastname}
+          </Typography>
+        </div>
 
         <IconButton onClick={handleNaveBarClose}>
           <ChevronLeftIcon />
