@@ -6,8 +6,6 @@ import { AuthContext } from '../Contexts/AuthContext';
 
 const ProductContext = createContext();
 
-
-
 const prodFisrt = {
   email_user: "",
   googleanalitic: "",
@@ -40,6 +38,7 @@ function ProductProvider({ children }) {
 
 
   const [ listprod, slistprod ] = useState([]);
+  const [ countProdUser, scountProdUser ] = useState(false);
   const [ prod, sprod ] = useState(prodFisrt);
 
   const [ alerta, salerta ] = useState({
@@ -56,6 +55,11 @@ function ProductProvider({ children }) {
           try {
               const { data } = await api.get(`/ListProdutos/${user.email}`);
               slistprod(data)
+
+
+              const count = await api.get(`/CountProdUser/${user.email}`);
+              scountProdUser(count.data)
+
 
               if(data.length > user.capacidade )
               stoggleSelectPage(false)
@@ -220,12 +224,16 @@ function ProductProvider({ children }) {
       handleAlert,
 
       toggleCria,
-      alerta,
-      listprod,
-      prod,
       toggleSelectPage,
       toggleEdit,
-      toggleListProd
+      toggleListProd,
+      
+      alerta,
+      listprod,
+      countProdUser,
+      prod,
+
+      
     }}>
       {children}
     </ProductContext.Provider>

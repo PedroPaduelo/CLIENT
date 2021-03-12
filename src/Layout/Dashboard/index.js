@@ -10,7 +10,7 @@ import Navbar from './Navbar';
 import SideBar from './SideBar';
 
 import CriarProdsVsPages from '../../pages/CriarProdsVsPages'
-import ListProds from '../../pages/ListProds'
+import Dash from '../../pages/Dash'
 
 import CustomRoute from '../../services/CustomRoute'
 import { DashProvider } from '../../Contexts/DashContext';
@@ -158,7 +158,7 @@ export default function Dashboard() {
                 <Switch>
 
                   <CustomRoute exact path={"/Painel/CriarProdsVsPages"} component={CriarProdsVsPages} redirectTO={"/"}/>
-                  <CustomRoute exact path={"/Painel/ListProds"} component={ListProds} redirectTO={"/"}/>
+                  <CustomRoute exact path={"/Painel/Dash"} component={Dash} redirectTO={"/"}/>
                 
                 </Switch>
               </Grid>

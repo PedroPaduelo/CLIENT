@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import { Grid } from '@material-ui/core';
 import SelectPage from './SelectPage';
-import ListProds from '../ListProds';
+import ListProds from './ListProds';
 import CadastraProd from './CadastraProd';
 import AtualizaProd from './AtualizaProd';
 import Alert  from '../../components/Alert';

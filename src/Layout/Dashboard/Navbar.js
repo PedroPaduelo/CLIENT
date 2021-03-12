@@ -24,7 +24,6 @@ import { DashContext } from '../../Contexts/DashContext';
 
 export default function NaveBar({classes}) {
 
-  
   const { open, handleNaveBarClose } = useContext(DashContext);
 
   const {  user } = useContext(AuthContext);
@@ -33,6 +32,13 @@ export default function NaveBar({classes}) {
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+  };
+
+  const handleisActive = (match) => {
+    if (!match) {
+      return false;
+    }
+    return 1;
   };
 
   
@@ -63,34 +69,46 @@ export default function NaveBar({classes}) {
       
         <List>
        
-            <NavLink  
-      
+          <NavLink  
             activeClassName={classes.naveLink} 
-            isActive={(match, location) => {
-              if (!match) {
-                return false;
-              }
-              return 1;
-            }}
+            isActive={handleisActive}
             to="/Painel/CriarProdsVsPages" 
-            >
-              <ListItem button
-              selected={selectedIndex === 1}
-              onClick={(event) => handleListItemClick(event, 1)}>
+          >
+            <ListItem button
+            selected={selectedIndex === 1}
+            onClick={(event) => handleListItemClick(event, 1)}>
 
-                  <ListItemIcon>
-                    <ListAltIcon className={classes.iconButton}/>
-                  </ListItemIcon>
-                 
-                  <Typography className={classes.marginTop} variant="button" display="block" gutterBottom>
-                    Produtos
-                  </Typography>
+              <ListItemIcon>
+                <ListAltIcon className={classes.iconButton}/>
+              </ListItemIcon>
               
+              <Typography className={classes.marginTop} variant="button" display="block" gutterBottom>
+                Produtos
+              </Typography>
+            
+            </ListItem>
+          </NavLink >
 
-              </ListItem>
+          <NavLink  
+            activeClassName={classes.naveLink} 
+            isActive={handleisActive}
+            to="/Painel/Dash" 
+          >
+            <ListItem button
+            selected={selectedIndex === 2}
+            onClick={(event) => handleListItemClick(event, 2)}>
 
-            </NavLink >
-         
+              <ListItemIcon>
+                <ListAltIcon className={classes.iconButton}/>
+              </ListItemIcon>
+              
+              <Typography className={classes.marginTop} variant="button" display="block" gutterBottom>
+                Resultados
+              </Typography>
+            
+            </ListItem>
+          </NavLink >
+        
         </List>
 
       <Divider/>
