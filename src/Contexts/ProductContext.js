@@ -58,13 +58,10 @@ function ProductProvider({ children }) {
 
 
               const count = await api.get(`/CountProdUser/${user.email}`);
-
-
               const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
-
               scountProdUser(porcentagemProdCriados)
 
-              console.log(porcentagemProdCriados)
+
 
               if(data.length > user.capacidade )
               stoggleSelectPage(false)
@@ -119,6 +116,10 @@ function ProductProvider({ children }) {
       mensagem: "Produto Criado com sucesso!!!",
       type: "success"
     })
+    
+    const count = await api.get(`/CountProdUser/${user.email}`);
+    const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
+    scountProdUser(porcentagemProdCriados)
 
     await handleListProd(user.email)
     stoggleListProd(true)
