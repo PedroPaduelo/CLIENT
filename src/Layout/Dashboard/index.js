@@ -32,6 +32,16 @@ const useStyles = makeStyles((theme) => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
+  
+  toolbarIcon_o: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+
+
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
