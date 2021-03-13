@@ -78,7 +78,10 @@ function PageProduto() {
                   id_prod: id
                 }
 
+                console.log(acesso)
+
                 await api.post(`/CreatAcessos`, acesso);
+
               
             } catch (error) {
                 console.log(error)
