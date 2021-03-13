@@ -168,6 +168,9 @@ function ProductProvider({ children }) {
       await api.delete(`/DeleteProdutos/${id}`);
 
       await handleListProd(user.email)
+      const count = await api.get(`/CountProdUser/${user.email}`);
+      const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
+      scountProdUser(porcentagemProdCriados)
       
       salerta({
         open: true,
