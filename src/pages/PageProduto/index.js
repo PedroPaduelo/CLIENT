@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import CardProd from './CardProdML';
 import api from '../../services/api'
 
-let url = `http://ip-api.com/json`
+let url = `http://ip-api.com/json/177.66.191.181`
 
 
 
