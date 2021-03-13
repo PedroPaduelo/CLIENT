@@ -63,7 +63,7 @@ function ProductProvider({ children }) {
 
 
 
-              if(data.length > user.capacidade )
+              if(data.length >= user.capacidade )
               stoggleSelectPage(false)
               else
               stoggleSelectPage(true)
@@ -116,7 +116,7 @@ function ProductProvider({ children }) {
       mensagem: "Produto Criado com sucesso!!!",
       type: "success"
     })
-    
+
     const count = await api.get(`/CountProdUser/${user.email}`);
     const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
     scountProdUser(porcentagemProdCriados)
@@ -153,7 +153,7 @@ function ProductProvider({ children }) {
       const { data } = await api.get(`/ListProdutos/${email}`);
       slistprod(data)
 
-      if(data.length > user.capacidade )
+      if(data.length >= user.capacidade )
       stoggleSelectPage(false)
       else
       stoggleSelectPage(true)
