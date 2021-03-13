@@ -4,6 +4,7 @@ import api from '../services/api'
 import { AuthContext } from '../Contexts/AuthContext';
 
 
+
 const ProductContext = createContext();
 
 const prodFisrt = {
@@ -61,6 +62,9 @@ function ProductProvider({ children }) {
               const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
               scountProdUser(porcentagemProdCriados)
 
+              
+
+              
 
 
               if(data.length >= user.capacidade )

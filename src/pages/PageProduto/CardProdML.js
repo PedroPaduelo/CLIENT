@@ -10,7 +10,7 @@ import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
-import ReactGA from 'react-ga';
+// import ReactGA from 'react-ga';
 
 import Header from './Header';
 import ImagensProd from './ImagensProd';
@@ -87,8 +87,8 @@ const useStyles = makeStyles((theme) => ({
 export default function Album({prod}) {
     const classes = useStyles();
 
-    ReactGA.initialize(prod.produtcfile, {debug : true });
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    // ReactGA.initialize(prod.produtcfile);
+    // ReactGA.pageview(window.location.pathname + window.location.search);
 
     const [ imgselect, simgselect ] = useState();
     
@@ -103,7 +103,6 @@ export default function Album({prod}) {
   return (
     <React.Fragment>
         <Grid
-          spacing={1}
           className={classes.cardContent}
         >
 
