@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import CardProd from './CardProdML';
 import api from '../../services/api'
 
-let url = `https://ip-api.com/json/177.66.191.181`
-
+import publicIp from 'react-public-ip'  
+ 
 
 
 function detectar_mobile() { 
@@ -36,7 +36,6 @@ function detectar_mobile() {
  }
 
 
-
  function get_horas() { 
     // Obtém a data/hora atual
     var datas = new Date();
@@ -60,29 +59,16 @@ function PageProduto() {
                 const { data } = await api.get(`/ListProdutosById/${id}`);
                 sprod(data)
 
-                const locarionIP = await api.get(url);
+                const ip = await publicIp.v4() || "";
 
                 let acesso = {
                   devicer: detectar_mobile(),
-                  provedor: locarionIP.data.as,
-                  country: locarionIP.data.country,
-                  countrycode: locarionIP.data.countryCode,
-                  lat: locarionIP.data.lat,
-                  lon: locarionIP.data.lon,
-                  ip: locarionIP.data.query,
-                  regioncod: locarionIP.data.region,
-                  regionname: locarionIP.data.regionName,
-                  timezone: locarionIP.data.timezone,
+                  ip,
                   data_acesso: get_data(),
                   hora_acesso: get_horas(),
                   id_prod: id
                 }
-
-                console.log(acesso)
-
-                await api.post(`/CreatAcessos`, acesso);
-
-              
+                await api.post(`/CreatAcessos`, acesso)
             } catch (error) {
                 console.log(error)
             }
