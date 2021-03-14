@@ -7,24 +7,24 @@ import publicIp from 'react-public-ip'
  
 
 
-function detectar_mobile() { 
-  if( navigator.userAgent.match(/Android/i)
-  || navigator.userAgent.match(/webOS/i)
-  || navigator.userAgent.match(/iPhone/i)
-  || navigator.userAgent.match(/iPad/i)
-  || navigator.userAgent.match(/iPod/i)
-  || navigator.userAgent.match(/BlackBerry/i)
-  || navigator.userAgent.match(/Windows Phone/i)
-  ){
-     return "Mobile";
+  function detectar_mobile() { 
+    if( navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)
+    ){
+      return "Mobile";
+    }
+    else {
+      return "Desktop";
    }
-  else {
-     return "Desktop";
-   }
- }
+  }
 
 
- function get_data() { 
+  function get_data() { 
     // Obtém a data/hora atual
     var datas = new Date();
     var dia     = datas.getDate();           // 1-31
@@ -33,10 +33,10 @@ function detectar_mobile() {
     // Formata a data e a hora (note o mês + 1)
     var str_data = dia + '/' + (mes+1) + '/' + ano4;
     return str_data;
- }
+  }
 
 
- function get_horas() { 
+  function get_horas() { 
     // Obtém a data/hora atual
     var datas = new Date();
     var hora    = datas.getHours();          // 0-23
@@ -45,40 +45,43 @@ function detectar_mobile() {
     var str_hora = hora + ':' + min + ':' + seg;
 
     return str_hora;
- }
+  }
 
 
 
 function PageProduto() {
   let { id } = useParams();
+
+  let { prodname } = useParams();
+
   const [ prod, sprod ] = useState("");
 
-    useEffect(() => {
-        async function getItems() {
-            try {
-                const { data } = await api.get(`/ListProdutosById/${id}`);
-                sprod(data)
+  useEffect(() => {
+    async function getItems() {
+      try {
+        const { data } = await api.get(`/ListProdutosById/${id}`);
+        sprod(data)
 
-                const ip = await publicIp.v4() || "";
+        const ip = await publicIp.v4() || "";
 
-                let acesso = {
-                  devicer: detectar_mobile(),
-                  ip,
-                  data_acesso: get_data(),
-                  hora_acesso: get_horas(),
-                  id_prod: id
-                }
-                await api.post(`/CreatAcessos`, acesso)
-            } catch (error) {
-                console.log(error)
-            }
+        let acesso = {
+          devicer: detectar_mobile(),
+          ip,
+          data_acesso: get_data(),
+          hora_acesso: get_horas(),
+          id_prod: id
         }
-        getItems();
-    },[id]);
+        await api.post(`/CreatAcessos`, acesso)
+      } catch (error) {
+          console.log(error)
+      }
+    }
+    getItems();
+  },[id]);
 
 
   return (
-    <CardProd prod={prod}/>
+    <CardProd prod={prod} title={prodname}/>
   );
 }
 

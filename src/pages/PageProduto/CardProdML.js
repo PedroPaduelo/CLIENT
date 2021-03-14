@@ -12,6 +12,8 @@ import Fab from '@material-ui/core/Fab';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 // import ReactGA from 'react-ga';
 
+import { Helmet } from "react-helmet";
+
 import Header from './Header';
 import ImagensProd from './ImagensProd';
 import ImagenProdPrinc from './ImagenProdPrinc';
@@ -84,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Album({prod}) {
+export default function Album({prod, title}) {
     const classes = useStyles();
 
     // ReactGA.initialize(prod.produtcfile);
@@ -102,6 +104,12 @@ export default function Album({prod}) {
 
   return (
     <React.Fragment>
+
+        <Helmet>
+            <title>{title}</title>
+            <link rel="shortcut icon" href="/Bokehlicia-Captiva-Rocket.ico"/>
+        </Helmet>
+
         <Grid
           className={classes.cardContent}
         >

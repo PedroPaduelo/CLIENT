@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     width: "100%",
     display: 'flex',
+    padding: "2rem"
   },
   btnBack: {
     alignSelf:'center',
@@ -101,8 +102,7 @@ function Creatprod() {
     const [ produtcdescription3, sprodutcdescription3 ] = useState();
 
     const [ poductsubhead, spoductsubhead ] = useState();
-    const [ pixelfacebook, spixelfacebook ] = useState();
-    const [ googleanalitic, sgoogleanalitic ] = useState();
+
     const [ whatsvendedor, swhatsvendedor ] = useState();
     const [ statusprodutc ] = useState("Ativo");
     const [ linkbuy, slinkbuy ] = useState();
@@ -124,8 +124,6 @@ function Creatprod() {
       produtcdescription1,
       produtcdescription2,
       produtcdescription3,
-      pixelfacebook,
-      googleanalitic,
       statusprodutc,
       linkbuy,
       price,
@@ -141,7 +139,6 @@ function Creatprod() {
 
     <Grid
       container
-      spacing={3}
       className={classes.root}
     >
       <Grid item xs={12} className={classes.gridItemBtnBack}>
@@ -166,9 +163,6 @@ function Creatprod() {
         >
 
 
-
-
-
           <Grid item xs={12} className={classes.gridItem}>
             <TextField 
               id="standard-basic" 
@@ -179,7 +173,6 @@ function Creatprod() {
               disabled={editcamp}
             />
           </Grid>
-
 
 
 
@@ -245,8 +238,6 @@ function Creatprod() {
 
 
 
-
-
           <Grid item xs={12} className={classes.gridItem}>
             <TextField
               id="outlined-multiline-static"
@@ -261,9 +252,8 @@ function Creatprod() {
             />
           </Grid>
 
-
-
           
+
           <Grid item xs={12} className={classes.gridItem}>
             <TextField
               id="outlined-multiline-static"
@@ -308,7 +298,6 @@ function Creatprod() {
 
 
 
-
           <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
             <TextField
               label="Preço"
@@ -319,28 +308,6 @@ function Creatprod() {
               fullWidth
               value={price}
               onChange={(e)=>{sprice(e.target.value)}}
-              disabled={editcamp}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
-            <TextField 
-              id="standard-basic" 
-              label="Pixel do facebook" 
-              fullWidth
-              value={pixelfacebook}
-              onChange={(e)=>{spixelfacebook(e.target.value)}}
-              disabled={editcamp}
-            />
-          </Grid>
-
-          <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
-            <TextField 
-              id="standard-basic" 
-              label="Googel analitic" 
-              fullWidth
-              value={googleanalitic}
-              onChange={(e)=>{sgoogleanalitic(e.target.value)}}
               disabled={editcamp}
             />
           </Grid>
@@ -369,7 +336,7 @@ function Creatprod() {
             />
           </Grid>
 
-          <Grid item xs={12} sm={12} md={6}className={classes.gridItem}>
+          <Grid item xs={12} sm={12} md={8}className={classes.gridItem}>
             <TextField
               label="Link da pagina"
               id="standard-start-adornment"
@@ -385,7 +352,6 @@ function Creatprod() {
           
 
 
-
           <Grid item xs={12} className={classes.gridItemBtn} >
             <Button 
               variant="contained" 
@@ -397,6 +363,8 @@ function Creatprod() {
             </Button>
           </Grid>
        
+
+
         </Grid>
       </Paper>
 
