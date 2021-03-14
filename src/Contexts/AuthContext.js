@@ -51,6 +51,12 @@ function AuthProvider({ children }) {
     async function getUser() {
       try {
         const { data } = await api.get(`/GetUserToken`,{token});
+        console.log(data)
+
+        if(data){
+          setAuthenticated(false);
+        }
+
         setUser(data.user)
         setAuthenticated(true);
         setLoading(false)
