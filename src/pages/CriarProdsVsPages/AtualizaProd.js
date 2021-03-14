@@ -136,7 +136,6 @@ function Creatprod() {
 
     <Grid
       container
-      spacing={3}
       className={classes.root}
     >
       <Grid item xs={12} className={classes.gridItemBtnBack}>
