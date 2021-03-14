@@ -52,20 +52,20 @@ const useStyles = makeStyles((theme) => ({
   },
 
 
-
-
-
+  gridItemBtnBack:{
+    justifyContent: 'space-between',
+    width: "100%",
+    display: 'flex',
+    padding: "2rem"
+  },
+  
   gridItemBtn:{
     justifyContent: 'center',
     width: "100%",
     display: 'flex',
     marginTop: "5rem"
   },
-  gridItemBtnBack:{
-    justifyContent: 'space-between',
-    width: "100%",
-    display: 'flex',
-  },
+
   btnBack: {
     alignSelf:'center',
     justifySelf: 'center',
@@ -141,7 +141,7 @@ function Creatprod() {
     >
       <Grid item xs={12} className={classes.gridItemBtnBack}>
         <Typography variant="h5" gutterBottom>
-          Novo produto
+          Atualizar produto
         </Typography>
 
         <Button 

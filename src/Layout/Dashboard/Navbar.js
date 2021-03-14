@@ -26,7 +26,7 @@ export default function NaveBar({classes}) {
 
   const { open, handleNaveBarClose } = useContext(DashContext);
 
-  const {  user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const [ selectedIndex, setSelectedIndex ] = useState(0);
 
