@@ -54,23 +54,18 @@ function ProductProvider({ children }) {
   useEffect(() => {
       async function getItems() {
           try {
-              const { data } = await api.get(`/ListProdutos/${user.email}`);
-              slistprod(data)
+            const { data } = await api.get(`/ListProdutos/${user.email}`);
+            slistprod(data)
 
 
-              const count = await api.get(`/CountProdUser/${user.email}`);
-              const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
-              scountProdUser(porcentagemProdCriados)
+            const count = await api.get(`/CountProdUser/${user.email}`);
+            const porcentagemProdCriados = ((count.data.count * 100) / user.capacidade)
+            scountProdUser(porcentagemProdCriados)
 
-              
-
-              
-
-
-              if(data.length >= user.capacidade )
-              stoggleSelectPage(false)
-              else
-              stoggleSelectPage(true)
+            if(data.length >= user.capacidade )
+            stoggleSelectPage(false)
+            else
+            stoggleSelectPage(true)
 
           } catch (error) {
               console.log(error)

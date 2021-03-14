@@ -19,12 +19,13 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import { AuthContext } from '../../Contexts/AuthContext';
 import { DashContext } from '../../Contexts/DashContext';
-
+import { ProductContext } from '../../Contexts/ProductContext';
 
 
 export default function NaveBar({classes}) {
 
   const { open, handleNaveBarClose } = useContext(DashContext);
+  const { handleToggleCriaProdGoBack } = useContext(ProductContext);
 
   const { user } = useContext(AuthContext);
 
@@ -32,6 +33,7 @@ export default function NaveBar({classes}) {
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+    handleToggleCriaProdGoBack()
   };
 
   const handleisActive = (match) => {
@@ -69,6 +71,7 @@ export default function NaveBar({classes}) {
       
         <List>
        
+
           <NavLink  
             activeClassName={classes.naveLink} 
             isActive={handleisActive}
@@ -88,6 +91,8 @@ export default function NaveBar({classes}) {
             
             </ListItem>
           </NavLink >
+
+
 
           <NavLink  
             activeClassName={classes.naveLink} 
