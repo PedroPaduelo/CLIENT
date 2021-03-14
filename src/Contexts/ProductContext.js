@@ -103,6 +103,13 @@ function ProductProvider({ children }) {
   };
 
 
+  async function handleToggleProdGoBack(){
+    stoggleListProd(true)
+    stoggleCria(false)
+    stoggleSelectPage(true)
+    await handleListProd(user.email)
+    stoggleEdit(false)
+  };
 
 
 
@@ -222,6 +229,7 @@ function ProductProvider({ children }) {
       handleToggleEditProd,
       handleToggleEditProdGoBack,
       handleToggleCriaProdGoBack,
+      handleToggleProdGoBack,
 
       handleCreatedProd, 
       handleUpdataProd,

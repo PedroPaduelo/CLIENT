@@ -25,7 +25,7 @@ import { ProductContext } from '../../Contexts/ProductContext';
 export default function NaveBar({classes}) {
 
   const { open, handleNaveBarClose } = useContext(DashContext);
-  const { handleToggleCriaProdGoBack } = useContext(ProductContext);
+  const { handleToggleProdGoBack } = useContext(ProductContext);
 
   const { user } = useContext(AuthContext);
 
@@ -33,7 +33,7 @@ export default function NaveBar({classes}) {
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
-    handleToggleCriaProdGoBack()
+    handleToggleProdGoBack()
   };
 
   const handleisActive = (match) => {
