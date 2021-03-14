@@ -36,17 +36,15 @@ export default function DenseTable() {
   const { listprod, handleToggleEditProd, handDeletProd } = useContext(ProductContext)
 
 
-
-
   return (
     <TableContainer component={Paper} className={classes.tablemargin}>
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell align="left" >Nome</TableCell>
-            <TableCell align="left" className={classes.colunasExit}>Status</TableCell>
-            <TableCell align="left" className={classes.colunasExit}>Preço</TableCell>
-            <TableCell align="left" className={classes.colunasExit}>Link da pragina</TableCell>
+            <TableCell align="center" className={classes.colunasExit} >Preço</TableCell>
+            <TableCell align="center" >Click View</TableCell>
+            <TableCell align="left" className={classes.colunasExit} >Link da pragina</TableCell>
             <TableCell align="left" >Ir para pagina</TableCell>
           </TableRow>
         </TableHead>
@@ -57,12 +55,12 @@ export default function DenseTable() {
                 {row.produtcname}
               </TableCell>
 
-              <TableCell align="left" className={classes.colunasExit}>
-                {row.statusprodutc}
+              <TableCell align="center" className={classes.colunasExit}>
+                {row.price}
               </TableCell>
 
-              <TableCell align="left" className={classes.colunasExit}>
-                {row.price}
+              <TableCell align="center" >
+                {row.contagem_prod}
               </TableCell>
 
               <TableCell align="left" className={classes.colunasExit}>

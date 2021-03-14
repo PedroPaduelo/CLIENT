@@ -93,13 +93,9 @@ export default function Album({prod, title}) {
     // ReactGA.pageview(window.location.pathname + window.location.search);
 
     const [ imgselect, simgselect ] = useState();
-    
     useEffect(()=>{
       simgselect(prod.img1)
     },[prod])
-
-
-
 
 
   return (
