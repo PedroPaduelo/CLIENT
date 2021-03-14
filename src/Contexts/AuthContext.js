@@ -53,7 +53,8 @@ function AuthProvider({ children }) {
         const { data } = await api.get(`/GetUserToken`,{token});
         console.log(data)
 
-        if(data){
+        if(!data){
+          setLoading(false)
           setAuthenticated(false);
         }
 
